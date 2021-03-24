@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <QuizCover></QuizCover>
+    <Questions></Questions>
   </div>
 </template>
 
 <script>
 import QuizCover from './components/QuizCover.vue'
+import Questions from './components/Questions.vue'
 
 export default {
   name: 'App',
   components: {
-    QuizCover
+    QuizCover,
+    Questions
   }
 }
 </script>
