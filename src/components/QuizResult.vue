@@ -2,7 +2,7 @@
     <div>
         <span class="bigWhite">Congratulations!</span>
         <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}">Your scored </span>
-        <span v-bind:style="{color:'#9BDF84', fontSize:'48px}">{{counter}}/5 and planted 1 tree!</span>
+        <span v-bind:style="{color:'#9BDF84', fontSize:'48px'}">{{counter}}/5 and planted 1 tree!</span>
         
         <img src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px"><br>
         <span class="smallWhite">Click me to start planting trees!</span> nbsp

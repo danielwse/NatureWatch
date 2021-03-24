@@ -77,11 +77,9 @@ export default {
                 this.index++;
                 this.selectedAnswer= "";
                 this.next=false;
-            } else if (counter==5) {
-                
             } else {
-
-            }
+                this.$router.push({name:'Result',params:{counter:this.counter}})  
+            }   
         }
       
     },

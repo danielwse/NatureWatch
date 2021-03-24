@@ -7,7 +7,7 @@
         <span class="green">In collaboration with</span> nbsp
         <img src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px"><br>
         <span class="smallWhite">Click me to start planting trees!</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px">
+        <router-link to="/Quiz/Questions" exact><img src="../assets/plant.svg" style="width:400px"></router-link>
     
     </div>
 </template>
