@@ -1,16 +1,18 @@
 <template>
     <div>
+       <app-header></app-header>
     </div>
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api'
+import Header from '../components/Header.vue'
 
-export default defineComponent({
-    setup() {
-        
-    },
-})
+export default {
+     components:{
+        'app-header':Header
+     }
+
+}
 </script>
 <style scoped>
 
