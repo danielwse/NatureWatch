@@ -2,13 +2,13 @@
     <div>
         <div v-bind:style="{color:'#FFFFFF', fontSize:'64px'}">Question {{index+1}} </div><br>
         <div v-bind:style="{color:'#45A025', fontSize:'36px'}">
-            {{questions[this.index][1].cont}}
+            {{questions[this.index].cont}}
         </div><br><br>
         <div class="bigWhite">
-        <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index][1].a}}</div>
-        <div id="b" v-on:click="matchAnswer('b')">b.{{questions[index][1].b}}</div>
-        <div id="c" v-on:click="matchAnswer('c')">c.{{questions[index][1].c}}</div>
-        <div id="d" v-on:click="matchAnswer('d')">d.{{questions[index][1].d}}</div>    
+        <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index].a}}</div>
+        <div id="b" v-on:click="matchAnswer('b')">b.{{questions[index].b}}</div>
+        <div id="c" v-on:click="matchAnswer('c')">c.{{questions[index].c}}</div>
+        <div id="d" v-on:click="matchAnswer('d')">d.{{questions[index].d}}</div>    
         </div><br>
         <button v-show="next" v-bind:style="{fontSize:'24px'}" v-on:click="updateQuestion()">Next</button>
 
@@ -43,7 +43,7 @@ export default {
         fetchQuestions:function() {
             database.collection('Questions').get().then(snapshot => {
                 snapshot.forEach(doc => {
-                    this.questions.push([doc.id,doc.data()]);
+                    this.questions.push(doc.data());
                     database.collection('Answers').doc(doc.id).get().then(doc => {
                         if (doc.exists) {
                             this.correctAnswer.push(doc.get('answer'));
@@ -58,12 +58,11 @@ export default {
         matchAnswer:function(key) {
             var cor = this.correctAnswer[this.index];
             this.selectedAnswer = key;
-            console.log(key,cor)
+
             if (cor == key) {
                 this.counter++;
                 document.getElementById(key).style.color = "green";
             } else {
-                console.log(this.counter);
                 document.getElementById(key).style.color = "red";
                 document.getElementById(cor).style.color = "green";
 
@@ -71,9 +70,9 @@ export default {
             this.next=true;
         },
         updateQuestion:function() {
-            document.getElementById(this.selectedAnswer).style.color = "white";
-            document.getElementById(this.correctAnswer[this.index]).style.color = "white";
-            if (this.index<=5) {
+            if (this.index<4) {
+                document.getElementById(this.selectedAnswer).style.color = "white";
+                document.getElementById(this.correctAnswer[this.index]).style.color = "white";
                 this.index++;
                 this.selectedAnswer= "";
                 this.next=false;
@@ -98,5 +97,13 @@ export default {
  .bigWhite {
         color:#FFFFFF;
         font-size: 36px;
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+   
     }
+ #a, #b,#c,#d {
+     text-align:left;
+ }
 </style>

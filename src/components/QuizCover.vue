@@ -7,8 +7,8 @@
         <span class="green">In collaboration with</span> nbsp
         <img src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px"><br>
         <span class="smallWhite">Click me to start planting trees!</span> nbsp
-        <router-link to="/Quiz/Questions" exact><img src="../assets/plant.svg" style="width:400px"></router-link>
-    
+        <img src="../assets/plant.svg" style="width:400px" v-on:click="redirect">
+        <div class="smallWhite" v-show="chanceLeft==0">Sorry, no chance left today. Come tomorrow!</div>
     </div>
 </template>
 
@@ -17,7 +17,15 @@ export default {
     name: 'QuizCover',
     data() {
         return {
-
+            chanceLeft: 2,
+        }
+    },
+    methods:{
+        redirect:function() {
+            if (this.chanceLeft>0) {
+                this.chanceLeft--;
+                this.$router.push({name:'Questions'})
+            } 
         }
     },
     created:function() {
