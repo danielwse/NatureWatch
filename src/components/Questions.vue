@@ -20,6 +20,7 @@ import database from "../firebase.js"
 
 export default {
     name: 'Questions',
+
     data() {
         return {
             questions: [],
@@ -28,6 +29,7 @@ export default {
             correctAnswer: [],
             counter:0,
             next: false,
+            chanceLeft: 2,
 
         }
     },
@@ -77,7 +79,8 @@ export default {
                 this.selectedAnswer= "";
                 this.next=false;
             } else {
-                this.$router.push({name:'Result',params:{counter:this.counter}})  
+                this.chanceLeft--;
+                this.$router.push({name:'Result',params:{counter:this.counter,chanceLeft:this.chanceLeft}})  
             }   
         }
       
