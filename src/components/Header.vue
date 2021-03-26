@@ -69,7 +69,7 @@ li.dropdown {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #008B8B;
+  background-color: white;
   font-size: 0.7em;
   min-width: 150px;
   min-height:10px;
@@ -85,7 +85,7 @@ li.dropdown {
   text-align: left;
 }
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #008B8B;
 }
 .dropdown:hover .dropdown-content {
   display: block;
