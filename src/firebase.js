@@ -1,5 +1,5 @@
-import firebase from 'firebase'
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import firebase from 'firebase';
+
 const firebaseConfig = {
   apiKey: "AIzaSyBrvePxM0kwC01wUxa-kncvZjHtOaNnvy8",
   authDomain: "naturewatch-4e101.firebaseapp.com",
