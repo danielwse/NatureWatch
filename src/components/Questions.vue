@@ -28,7 +28,7 @@ export default {
             selectedAnswer: "",
             correctAnswer: [],
             counter:0,
-            next: false
+            next: false,
         }
     },
     props: {
