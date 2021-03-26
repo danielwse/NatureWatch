@@ -28,10 +28,11 @@ export default {
             selectedAnswer: "",
             correctAnswer: [],
             counter:0,
-            next: false,
-            chanceLeft: 2,
-
+            next: false
         }
+    },
+    props: {
+        
     },
     computed: {
         currentQuestion() {
@@ -79,8 +80,7 @@ export default {
                 this.selectedAnswer= "";
                 this.next=false;
             } else {
-                this.chanceLeft--;
-                this.$router.push({name:'Result',params:{counter:this.counter,chanceLeft:this.chanceLeft}})  
+                this.$router.push({name:'Result',params:{counter:this.counter}})  
             }   
         }
       

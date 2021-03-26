@@ -13,10 +13,10 @@
             <span v-bind:style="{color:'#9BDF84', fontSize:'48px'}">{{counter}}/5 </span>
             <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}">! {{5-counter}} more score(s) to plant 1 tree!</span><br>
         </div>
-        <span class="smallWhite">Click me to start planting trees!</span>
-        <span class="smallWhite" v-show="chanceLeft!=0">You can plant {{chanceLeft}} more tree today</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px" v-on:click="redirect">
-        <div class="smallWhite" v-show="chanceLeft==0">Sorry, no chance left today. Come tomorrow!</div>
+
+        <span class="smallWhite">No chance left today. Come tomorrow!</span> nbsp
+        <img src="../assets/plant.svg" style="width:400px vertical-align:middle">
+       
     
     </div>
 </template>
@@ -26,16 +26,9 @@ export default {
     name: 'QuizResult',
     props: {
         counter: {},
-        chanceLeft: {}
     },
     data() {
         return {
-
-        }
-    },
-    methods: {
-        redirect:function() {
-            this.$router.push({name:'Questions',params:{chanceLeft:this.chanceLeft}})
         }
     },
     created:function() {
