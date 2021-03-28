@@ -17,7 +17,7 @@ import QuizResult from './components/QuizResult.vue'
 export default[
     { path: '/', component: Home},
     { path: '/play', component: Play},
-    { path: '/animal', component: AnimalHome},
+    { path: '/animal', name: "AnimalHome", component: AnimalHome},
     { path: '/animal_ce', name: 'CE', component: AnimalContent},
     { path: '/animal_e', name: 'E', component: AnimalContent},
     { path: '/animal_v', name: 'V', component: AnimalContent},
@@ -25,7 +25,7 @@ export default[
     { path: '/forest_a', component: Forest_A},
     { path: '/forest_c', component: Forest_C},
     { path: '/forest_b', component: Forest_B},
-    { path: '/', name: 'Quiz', component: QuizCover},
+    { path: '/playtoplant', name: 'Quiz', component: QuizCover},
     { path: '/Questions', name:'Questions',component: Questions},
     { path: '/Result', name: 'Result',component: QuizResult, props: true}
 ]

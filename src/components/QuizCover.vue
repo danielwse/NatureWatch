@@ -1,5 +1,6 @@
 <template>
     <div>
+        <PlayHeader></PlayHeader>
         <span class="bigWhite">Welcome to </span>
         <span class="lightGreen">Play to Plant!</span><br>
         <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
@@ -15,11 +16,13 @@
 </template>
 
 <script>
-import Modal from './Modal.vue'
+import Modal from './Modal.vue';
+import PlayHeader from './Headers/Play.vue';
 export default {
     name: 'QuizCover',
     components: {
         Modal,
+        PlayHeader
     },
     data() {
         return {

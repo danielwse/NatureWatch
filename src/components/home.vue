@@ -8,10 +8,10 @@
         Explore
         <br><br>
         <div id="left">
-          <button id="forest"> Forests </button>
+          <button id="forest" style="cursor: pointer;"> Forests </button>
         </div>
         <div id="right">
-          <button id="animals"> Animals </button>
+          <button v-on:click="route()" id="animals" style="cursor: pointer;"> Animals </button>
         </div>
       </div>
       
@@ -23,7 +23,11 @@
 <script>
 
 export default {
-
+  methods : {
+    route() {
+      this.$router.push({name: 'AnimalHome'})
+    }
+  }
 }
 </script>
 

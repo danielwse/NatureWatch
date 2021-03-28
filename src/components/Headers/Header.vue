@@ -2,7 +2,7 @@
     <div>
         <ul>
             <li><router-link to="/" exact>Home</router-link></li>
-            <li><router-link to="/play" exact>Play to Plant!</router-link></li>
+            <li><router-link to="/playtoplant" exact>Play to Plant!</router-link></li>
             <li class="dropdown">
                 <router-link to="/forest" exact class = "dropbtn">Forests</router-link>
                 <div class="dropdown-content">
