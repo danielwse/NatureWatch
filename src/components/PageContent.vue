@@ -1,3 +1,8 @@
+/* 
+controls the display layout of a single animal. AnimalContent will use many PageContent components
+for many animals.
+*/
+
 <template>
      <div v-bind:class= 'animalIndex'>
         <div class = 'left'>

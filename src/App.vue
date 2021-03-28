@@ -1,17 +1,13 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <AnimalContent></AnimalContent>
   </div>
 </template>
 
 <script>
-import AnimalContent from './components/AnimalContent.vue'
-
 export default {
   name: 'App',
   components: {
-    AnimalContent
   }
 }
 </script>

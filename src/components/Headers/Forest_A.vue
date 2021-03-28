@@ -1,12 +1,12 @@
 <template>
-    <div id = "top">
-        <p id="head">Congo Rainforest and Basin</p>
+    <div id="top">
+        <p id="head">The Amazon</p>
         <app-header></app-header>
     </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
+import Header from './Header.vue'
 
 export default {
      components:{
@@ -15,6 +15,7 @@ export default {
 
 }
 </script>
+
 <style scoped>
 #head{
     text-align: left;
@@ -33,4 +34,7 @@ export default {
     background-size: cover; 
     height:200px;
 }
+
 </style>
+
+

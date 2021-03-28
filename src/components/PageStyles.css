@@ -15,8 +15,7 @@
 #distributionImg {
     position: relative;
     width: 250px;
-    height: 300px;
-    top: 30px;
+    height: 250px;
     object-fit: contain;
 }
 
@@ -25,7 +24,7 @@
     border: 1px solid white;
     width: auto;
     height: auto;
-    top: 70px;
+    top: 5px;
     font-family: Mohave;
     font-style: normal;
     font-weight: 500;
@@ -40,7 +39,7 @@
     border: 1px solid white;
     width: auto;
     height: auto;
-    top: 70px;
+    top: 5px;
     font-family: Mohave;
     font-style: normal;
     font-weight: 500;
@@ -52,7 +51,7 @@
 
 #distribution {
     position: relative;
-    top: 90px;
+    top: 10px;
     border: 1px solid white;
     font-family: Mohave;
     font-style: normal;
@@ -64,7 +63,7 @@
 }
 
 .circle-with-text {
-    top: 80px;
+    top: 30px;
     display: inline-block;
     width: 200px;
     height: 200px;
@@ -118,7 +117,7 @@
 #oddMainText {
     position: relative;
     padding: 10px;
-    top: 80px;
+    top: 30px;
     font-family: Arial;
     font-style: normal;
     font-weight: 500;
@@ -131,7 +130,7 @@
 #evenMainText {
     position: relative;
     padding: 10px;  
-    top: 80px;
+    top: 30px;
     font-family: Arial;
     font-style: normal;
     font-weight: 500;
@@ -151,9 +150,10 @@
     line-height: 50px;
     text-align: center;
     display: block;
-    top: 80px;
+    top: 30px;
     border: 1px solid white;
     color: #BE6160;
+    margin-bottom: 0;
 }
 
 #oddThreats {
@@ -162,11 +162,13 @@
     font-style: bold;
     font-weight: 500px;
     font-size: 24px;
-    line-height: 20px;
-    top: 50px;
+    line-height: 30px;
+    top: 30px;
     text-align: center;
     color: #3E3434;
     border: 1px solid white;
+    margin: 0;
+    padding-top: 0;
 }
 
 #evenThreats {
@@ -175,28 +177,29 @@
     font-style: bold;
     font-weight: 500px;
     font-size: 24px;
-    line-height: 20px;
-    top: 50px;
+    line-height: 30px;
+    top: 30px;
     text-align: center;
     color: #c4c4c4;
     border: 1px solid white;
+    margin: 0;
+    padding-top: 0;
 
 }
 #animalPic {
     position: relative;
-    width: 286px;
-    height: 216px;
-    top: 80px;
-    border-radius: 300px;
+    width: 250px;
+    height: 250px; 
+    top: 30px;
+    border-radius: 50%;
     border: 1px solid white;
-    object-fit: fill;
+    object-fit:cover;
 }
 
 
 #oddGenericNames {
     border: 1px solid white;
     position: relative;
-    top: 50px;
     width: auto;
     height: auto;
     font-family: Mohave;
@@ -208,12 +211,12 @@
     color: #3E3434;
     border: 1px solid #C4C4C4;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
 }
 
 #evenGenericNames {
     border: 1px solid white;
     position: relative;
-    top: 50px;
     width: auto;
     height: auto;
     font-family: Mohave;
@@ -224,7 +227,10 @@
     text-align: center;
     color: #C4C4C4;
     border: 1px solid #C4C4C4;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1); 
+    margin-bottom: 0;
 }
 
 #oddScientificNames {
@@ -233,10 +239,11 @@
     font-style: italic;
     font-weight: 500;
     font-size: 24px;
-    line-height: 67px;
     text-align: center;
     border: 1px solid white;
     color: #3E3434;
+    margin: 0;
+    padding-top: 0;
 }
 
 #evenScientificNames {
@@ -245,10 +252,11 @@
     font-style: italic;
     font-weight: 500;
     font-size: 24px;
-    line-height: 67px;
     text-align: center;
     border: 1px solid white;
     color: #C4C4C4;
+    margin: 0;
+    padding-top: 0;
 }
 
 #donationText {
@@ -263,6 +271,7 @@
     line-height: 50px;
     text-align: center;
     color: #BE6160;
+    margin-bottom: 0;
 }
 
 #donationLinks {
@@ -271,6 +280,8 @@
     max-height: 30%;
     max-width: 100%;
     border: 1px solid white;
+    margin: 0;
+    padding-top: 0;
     
 }
 

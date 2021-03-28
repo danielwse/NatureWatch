@@ -1,12 +1,13 @@
 <template>
-    <div id="top">
-        <p id="head">The Amazon</p>
+    <div id = "top">
+        <p id="head">Bosawás Biosphere</p>
         <app-header></app-header>
+        
     </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
+import Header from './Header.vue'
 
 export default {
      components:{
@@ -15,7 +16,6 @@ export default {
 
 }
 </script>
-
 <style scoped>
 #head{
     text-align: left;
@@ -36,5 +36,3 @@ export default {
 }
 
 </style>
-
-

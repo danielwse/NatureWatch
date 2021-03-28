@@ -1,12 +1,12 @@
 <template>
-    <div id = "top">
-        <p id="head">Critically Endangered</p>
+    <div id="top">
+        <p id="head">Play to Plant!</p>
         <app-header></app-header>
     </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
+import Header from './Header.vue'
 
 export default {
      components:{
@@ -27,7 +27,7 @@ export default {
 
 
 #top{
-    background-image: url("https://coverfiles.alphacoders.com/487/48714.jpg");
+    background-image: url("https://www.sezarc.org/sites/default/files/internal-header-5.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 

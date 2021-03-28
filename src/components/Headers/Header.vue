@@ -14,9 +14,9 @@
             <li class="dropdown">
                 <router-link to="/animal" exact class = "dropbtn">Animal</router-link>
                 <div class="dropdown-content">
-                    <router-link to="/animal_ce" exact>Critically Endangered</router-link>
-                    <router-link to="/animal_e" exact>Endangered</router-link>
-                    <router-link to="/animal_v" exact>Vulnerable</router-link>
+                    <a :href="$router.resolve({name: 'CE'}).href">Critically Endangered</a>
+                    <a :href="$router.resolve({name: 'E'}).href">Endangered</a>
+                    <a :href="$router.resolve({name: 'V'}).href">Vulnerable</a>
                 </div>
             </li>
         </ul>
