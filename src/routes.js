@@ -9,6 +9,10 @@ import Forest from './components/Headers/Forest.vue'
 import Forest_A from './components/Headers/Forest_A.vue'
 import Forest_C from './components/Headers/Forest_C.vue'
 import Forest_B from './components/Headers/Forest_B.vue'
+import QuizCover from './components/QuizCover.vue'
+import Questions from './components/Questions.vue'
+import QuizResult from './components/QuizResult.vue'
+
 
 export default[
     { path: '/', component: Home},
@@ -20,5 +24,9 @@ export default[
     { path: '/forest', component: Forest},
     { path: '/forest_a', component: Forest_A},
     { path: '/forest_c', component: Forest_C},
-    { path: '/forest_b', component: Forest_B}
+    { path: '/forest_b', component: Forest_B},
+    { path: '/', name: 'Quiz', component: QuizCover},
+    { path: '/Questions', name:'Questions',component: Questions},
+    { path: '/Result', name: 'Result',component: QuizResult, props: true}
 ]
+
