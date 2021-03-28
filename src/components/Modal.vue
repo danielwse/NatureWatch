@@ -53,6 +53,8 @@ import Modal2 from "./Modal2.vue"
           email:'',
           password:'',
           name:'',
+          trees:0,
+          chanceLeft:2,
         },
         errorMsg:false,
         isModalVisible: false,
@@ -76,6 +78,7 @@ import Modal2 from "./Modal2.vue"
               if (doc.data().password == this.user.password) {
                 unmatched=0;
                 this.user.name=doc.data().name;
+                this.user.trees=doc.data().trees;
                 this.$router.push({name:'Questions',params:{user:this.user}})
               }
             }

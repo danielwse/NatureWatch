@@ -50,6 +50,8 @@ import database from "../firebase.js"
           email:'',
           password:'',
           name:'',
+          trees:0,
+          chanceLeft:2,
         },
         errorMsg:false,
         successMsg:false,
