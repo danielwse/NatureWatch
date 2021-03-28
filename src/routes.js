@@ -1,4 +1,4 @@
-import Home from './components/Headers/Home.vue'
+import Home from './components/home.vue'
 import AnimalHome from './components/AnimalHome.vue'
 import Play from './components/Headers/Play.vue'
 //import Animal from './components/Headers/Animal.vue'
