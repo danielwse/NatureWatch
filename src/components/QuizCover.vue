@@ -7,20 +7,31 @@
         <span class="green">In collaboration with</span> nbsp
         <img src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px"><br>
         <span class="smallWhite">Click me to start planting trees!</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px" v-on:click="redirect">
+        <img src="../assets/plant.svg" style="width:400px" v-on:click="showModal">
+        <Modal v-show="isModalVisible" v-on:close="closeModal"/>
+
+
     </div>
 </template>
 
 <script>
+import Modal from './Modal.vue'
 export default {
     name: 'QuizCover',
+    components: {
+        Modal,
+    },
     data() {
         return {
+            isModalVisible: false,
         }
     },
     methods:{
-        redirect:function() {
-            this.$router.push({name:'Questions'})
+        showModal() {
+            this.isModalVisible = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
         }
     },
     created:function() {

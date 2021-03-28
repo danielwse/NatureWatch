@@ -32,7 +32,9 @@ export default {
         }
     },
     props: {
-        
+        user:{
+
+        },
     },
     computed: {
         currentQuestion() {
