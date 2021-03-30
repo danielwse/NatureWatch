@@ -18,6 +18,8 @@
 <script>
 import Modal from './Modal.vue';
 import PlayHeader from './Headers/Play.vue';
+import firebase from "firebase";
+
 export default {
     name: 'QuizCover',
     components: {
@@ -30,8 +32,10 @@ export default {
         }
     },
     methods:{
-        showModal() {
-            this.isModalVisible = true;
+        showModal:function() {
+            console.log(firebase.auth().currentUser);
+            if (firebase.auth().currentUser!=null) this.$router.push('/Questions');
+            else this.isModalVisible = true;
         },
         closeModal() {
             this.isModalVisible = false;

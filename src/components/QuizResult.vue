@@ -14,14 +14,17 @@
             <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}">! {{5-counter}} more score(s) to plant 1 tree!</span><br>
         </div>
 
-        <span class="smallWhite">No chance left today. Come tomorrow!</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px vertical-align:middle">
-       
+        <span class="smallWhite" v-show="chances<=0">No chance left today. Come tomorrow!</span>
+        <span class="smallWhite" v-show="chances>0">You have {{chances}} chance left!</span> nbsp
+        <img src="../assets/plant.svg" style="width:400px vertical-align:middle" v-on:click="redirect">
+        <button style="vertical-align:right" v-on:click="logout">LogOut</button>
     
     </div>
 </template>
 
 <script>
+import database from "../firebase.js"
+import firebase from "firebase"
 export default {
     name: 'QuizResult',
     props: {
@@ -29,10 +32,31 @@ export default {
     },
     data() {
         return {
+            chances:null,
         }
     },
+    methods:{
+        redirect:function() {
+            if (this.chances>0) this.$router.push('/Questions');
+        },
+        logout:function() {
+           firebase.auth().signOut().then(() => {
+            alert('Safely signed out!');
+          }).catch(error => {
+            alert('Sign Out Error', error);
+          });
+        }
+    },
+
     created:function() {
         document.body.style.backgroundColor = "#343434"
+    },
+    beforeCreate: function() {
+        var uid=firebase.auth().currentUser.uid;
+        database.collection('Users').doc(uid).get().then(doc => {
+            this.chances = doc.data().chanceLeft;
+            console.log(this.chances);
+        })
     }
 }
 </script>

@@ -17,6 +17,7 @@
 
 <script>
 import database from "../firebase.js"
+import firebase from "firebase"
 
 export default {
     name: 'Questions',
@@ -82,6 +83,16 @@ export default {
                 this.selectedAnswer= "";
                 this.next=false;
             } else {
+                var uid=firebase.auth().currentUser.uid;
+                database.collection('Users').doc(uid).update({
+                    chanceLeft: firebase.firestore.FieldValue.increment(-1)
+                });
+
+                if (this.counter==5) {
+                    database.collection('Users').doc(uid).update({
+                        trees: firebase.firestore.FieldValue.increment(1)
+                    });
+                }
                 this.$router.push({name:'Result',params:{counter:this.counter}})  
             }   
         }
