@@ -1,6 +1,6 @@
 <template>
     <div id="top">
-        <p id="head">Atlantic Rainforest</p>
+        <p id="head">{{ forestName }}</p>
         <app-header></app-header>
     </div>
 </template>
@@ -11,6 +11,11 @@ import Header from './Header.vue'
 export default {
      components:{
         'app-header':Header
+     },
+     props : {
+         forestName : {
+             type: String
+         }
      }
 
 }
@@ -18,7 +23,7 @@ export default {
 <style scoped>
 #head{
     text-align: left;
-    font-size: 5em;
+    font-size: 4em;
     font-weight: 100;
     color: white;
     padding:0;

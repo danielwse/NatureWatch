@@ -3,12 +3,14 @@
         <ul>
             <li><router-link to="/" exact>Home</router-link></li>
             <li><router-link to="/playtoplant" exact>Play to Plant!</router-link></li>
+            <li><router-link to="/userdashboard" exact>User Dashboard</router-link></li>
             <li class="dropdown">
-                <router-link to="/forest" exact class = "dropbtn">Forests</router-link>
+                               <a :href="$router.resolve({name:'Forests'}).href">Forests</a>
+
                 <div class="dropdown-content">
-                    <router-link to="/forest_a" exact>Amazon</router-link>
-                    <router-link to="/forest_c" exact>Congo</router-link>
-                    <router-link to="/forest_b" exact>Bosawás</router-link>
+                    <a :href="$router.resolve({name: 'Amazon Rainforest'}).href">Amazon Rainforest</a>
+                    <a :href="$router.resolve({name: 'Congo Basin'}).href">Congo Basin</a>
+                    <a :href="$router.resolve({name: 'Nicaragua Bosawás Biosphere Reserve'}).href">Bosawás Biosphere</a>
                 </div>
             </li>
             <li class="dropdown">
