@@ -16,7 +16,7 @@
 
 <script>
 
-import Header from '../components/Header.vue'
+import Header from './Headers/Header.vue'
 
 export default {
      data(){
