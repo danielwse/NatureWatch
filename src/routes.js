@@ -1,28 +1,33 @@
-import Home from './components/Home.vue'
-import Play from './components/Play.vue'
-import Animal from './components/Animal.vue'
-import Animal_ce from './components/Animal_ce.vue'
-import Animal_e from './components/Animal_e.vue'
-import Animal_v from './components/Animal_v.vue'
+import Home from './components/home.vue'
+import AnimalHome from './components/AnimalHome.vue'
+import Play from './components/Headers/Play.vue'
+import AnimalContent from './components/AnimalContent.vue'
+import UserDashboard from './components/UserDashboard.vue'
 import Notfound_A from './components/Notfound_A.vue'
-import Forest from './components/Forest.vue'
-import Forest_A from './components/Forest_A.vue'
-import Forest_C from './components/Forest_C.vue'
-import Forest_B from './components/Forest_B.vue'
 import Notfound_F from './components/Notfound_F.vue'
+import QuizCover from './components/QuizCover.vue'
+import Questions from './components/Questions.vue'
+import QuizResult from './components/QuizResult.vue'
+import ForestContent from './components/ForestContent.vue'
 
 
 export default[
     { path: '/', component: Home},
     { path: '/play', component: Play},
-    { path: '/animal', component: Animal},
-    { path: '/animal_ce', component: Animal_ce},
-    { path: '/animal_e', component: Animal_e},
-    { path: '/animal_v', component: Animal_v},
+    { path: '/animal', name: "AnimalHome", component: AnimalHome},
+    { path: '/animal_ce', name: 'CE', component: AnimalContent},
+    { path: '/animal_e', name: 'E', component: AnimalContent},
+    { path: '/animal_v', name: 'V', component: AnimalContent},
+    { path: '/forests', name: 'Forests', component: ForestContent},
+    { path: '/forests/Amazon', name: "Amazon Rainforest", component: ForestContent},
+    { path: '/forests/Congo', name: "Congo Basin", component:ForestContent},
+    { path: '/forests/Bosawas', name: "Nicaragua Bosawás Biosphere Reserve", component: ForestContent},
+    { path: '/playtoplant', name: 'Quiz', component: QuizCover},
+    { path: '/Questions', name:'Questions',component: Questions},
+    { path: '/Result', name: 'Result',component: QuizResult, props: true},
+    { path: '/userdashboard', component: UserDashboard},
     { path: '/notfound_a', component: Notfound_A},
-    { path: '/forest', component: Forest},
-    { path: '/forest_a', component: Forest_A},
-    { path: '/forest_c', component: Forest_C},
-    { path: '/forest_b', component: Forest_B},
     { path: '/notfound_f', component: Notfound_F}
+
 ]
+
