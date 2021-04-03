@@ -19,6 +19,7 @@
 import Modal from './Modal.vue';
 import PlayHeader from './Headers/Play.vue';
 import firebase from "firebase";
+import database from "../firebase.js"
 
 export default {
     name: 'QuizCover',
@@ -29,17 +30,32 @@ export default {
     data() {
         return {
             isModalVisible: false,
+            date:'',
+            lastSignIn:'',
         }
     },
     methods:{
         showModal:function() {
             console.log(firebase.auth().currentUser);
-            if (firebase.auth().currentUser!=null) this.$router.push('/Questions');
+           
+            const today = new Date();
+            this.date = today.getDate();
+            const last = firebase.auth().currentUser.metadata.lastSignInTime;
+            this.lastSignin = last.substring(5,7);
+
+            var user = firebase.auth().currentUser;
+            if (this.date-this.lastSignin>0) {
+                database.collection("Users").doc(user.uid).update({
+                    chanceLeft:2
+                })
+            }
+
+            if (user!=null) this.$router.push('/Questions');
             else this.isModalVisible = true;
         },
         closeModal() {
             this.isModalVisible = false;
-        }
+        },
     },
     created:function() {
         document.body.style.backgroundColor = "#343434"
