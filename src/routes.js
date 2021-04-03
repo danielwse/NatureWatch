@@ -8,7 +8,7 @@ import Notfound_F from './components/Notfound_F.vue'
 import QuizCover from './components/QuizCover.vue'
 import Questions from './components/Questions.vue'
 import QuizResult from './components/QuizResult.vue'
-import ForestContent from './components/ForestContent.vue'
+import ForestContent from './components/ForestHome.vue'
 
 
 export default[

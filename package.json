@@ -9,13 +9,27 @@
   },
   "dependencies": {
     "@vue/composition-api": "^1.0.0-rc.5",
+    "axios": "^0.21.1",
+    "commander": "^7.2.0",
     "core-js": "^3.6.5",
+    "csvtojson": "^2.0.10",
+    "dot-object": "^2.1.4",
     "firebase": "^8.3.1",
+
+    "firebase-admin": "^9.6.0",
+    "fs-extra": "^9.1.0",
+    "leaflet": "^1.7.1",
+    "lodash": "^4.17.21",
+
     "semantic-ui-vue": "^0.11.0",
+
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.6",
     "vue-radial-progress": "^0.3.2",
-    "vue-router": "^3.5.1"
+    "vue-router": "^3.5.1",
+    "vue-world-map": "^0.1.1",
+    "vue2-leaflet": "^2.7.0",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
