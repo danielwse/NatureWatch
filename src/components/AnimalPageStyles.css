@@ -62,36 +62,22 @@
     color: #BE6160;
 }
 
-.circle-with-text {
-    top: 30px;
+.animalCircle-with-text {
     display: inline-block;
     width: 200px;
     height: 200px;
-    background-color: aqua;
-    border: 1px solid white;
-    text-align: center;
+    line-height: 200px;
     border-radius: 50%;
-    line-height: 0;
-    position: relative;
-}
-
-.circle-with-text::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-}
-#survivalStats {
+    text-align: center;
+    font-size: 300%;
+    border: 2px solid #666;
+    color: black;
+    background-color: aqua;
     font-family: Mohave;
     font-style: normal;
     font-weight: bold;
-    font-size: 300%;
-    line-height: 100px;
-    text-align: center;
-    border : 1px solid white;
-    color: #000000;
-    bottom: 50%;
-    width: 100%;
 }
+
 
 .left {
     width: 30%;
@@ -117,7 +103,7 @@
 #oddAnimalMainText {
     position: relative;
     padding: 10px;
-    top: 30px;
+    
     font-family: Arial;
     font-style: normal;
     font-weight: 500;
@@ -130,7 +116,7 @@
 #evenAnimalMainText {
     position: relative;
     padding: 10px;  
-    top: 30px;
+    
     font-family: Arial;
     font-style: normal;
     font-weight: 500;
@@ -190,7 +176,7 @@
     position: relative;
     width: 250px;
     height: 250px; 
-    top: 30px;
+    
     border-radius: 50%;
     border: 1px solid white;
     object-fit:cover;

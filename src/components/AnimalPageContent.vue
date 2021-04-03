@@ -30,8 +30,7 @@ for many animals.
             </div>
         </div>
         <div class = 'right'>
-            <div class="circle-with-text">
-                <p id = "survivalStats"> {{ animal.numbersLeft}} </p>
+            <div class="animalCircle-with-text"> {{animal.numbersLeft}}
             </div>
                 <p v-if= "animalIndex == 'oddAnimal'" id = 'oddLeftInTheWild'> Left In The Wild </p>
                 <p v-else id = "evenLeftInTheWild"> Left In The Wild</p>

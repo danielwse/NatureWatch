@@ -1,12 +1,10 @@
 import Home from './components/home.vue'
 import AnimalHome from './components/AnimalHome.vue'
 import Play from './components/Headers/Play.vue'
-//import Animal from './components/Headers/Animal.vue'
 import AnimalContent from './components/AnimalContent.vue'
-/*import Animal_e from './components/Animal_e.vue'
-import Animal_v from './components/Animal_v.vue'*/
 import UserDashboard from './components/UserDashboard.vue'
-/*import Forest from './components/Headers/Forest.vue'*/
+import Notfound_A from './components/Notfound_A.vue'
+import Notfound_F from './components/Notfound_F.vue'
 import QuizCover from './components/QuizCover.vue'
 import Questions from './components/Questions.vue'
 import QuizResult from './components/QuizResult.vue'
@@ -27,6 +25,9 @@ export default[
     { path: '/playtoplant', name: 'Quiz', component: QuizCover},
     { path: '/Questions', name:'Questions',component: Questions},
     { path: '/Result', name: 'Result',component: QuizResult, props: true},
-    { path: '/userdashboard', component: UserDashboard}
+    { path: '/userdashboard', component: UserDashboard},
+    { path: '/notfound_a', component: Notfound_A},
+    { path: '/notfound_f', component: Notfound_F}
+
 ]
 

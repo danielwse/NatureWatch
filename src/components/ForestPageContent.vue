@@ -23,8 +23,7 @@
             </div>
         </div>
         <div class = 'right'>
-            <div class="circle-with-text">
-                <p id = "survivalStats"> {{ forest.numbersLeft}} </p>
+            <div class="forestCircle-with-text"> {{forest.numbersLeft}}
             </div>
                 <p v-if= "forestIndex == 'oddForest'" id = 'oddNumMeaning'> {{ forest.numMeaning}} </p>
                 <p v-else id = "evenNumMeaning"> {{ forest.numMeaning }}</p>

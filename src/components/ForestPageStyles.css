@@ -62,29 +62,20 @@
     color: #BE6160;
 }
 
-.circle-with-text {
-    top: 30px;
+.forestCircle-with-text {
     display: inline-block;
     width: 200px;
     height: 200px;
-    background-color: aqua;
-    border: 1px solid white;
-    text-align: center;
+    line-height: 200px;
     border-radius: 50%;
-    line-height: 0;
-    position: relative;
-}
-
-#survivalStats {
+    text-align: center;
+    font-size: 250%;
+    border: 2px solid #666;
+    color: black;
+    background-color: aqua;
     font-family: Mohave;
     font-style: normal;
     font-weight: bold;
-    font-size: 250%;
-    text-align: center;
-    border : 1px solid white;
-    color: #000000;
-    bottom: 50%;
-    width: 100%;
 }
 
 .left {
@@ -111,7 +102,6 @@
 #oddMainText {
     position: relative;
     padding: 10px;
-    top: 30px;
     font-family: Arial;
     font-style: normal;
     font-weight: 500;
@@ -125,7 +115,6 @@
 #evenMainText {
     position: relative;
     padding: 10px;  
-    top: 30px;
     font-family: Arial;
     font-style: normal;
     font-weight: 500;
@@ -186,7 +175,6 @@
     position: relative;
     width: 90%;
     height: 85%; 
-    top: 30px;
     border-radius: 10%;
     border: 1px solid white;
     object-fit:cover;

@@ -7,7 +7,7 @@ Layout for animal homepage. When user clicks 'Animal' in the header
 <div class="grid-container">
     <div v-for="(animal, index) in animals" :key="index" class="each-grid">
         <div v-on:click="route(animal.status, animal.genericName)" style="cursor: pointer;">
-        <img id = 'animalPic' :src='animal.imageURL'>
+        <img id = 'homeAnimalPic' :src='animal.imageURL'>
         <p id = 'genericNames' >{{ animal.genericName}}</p>
         <p v-if="animal.status == 'CE'" id = 'statusText'>Critically Endangered</p>
         <p v-if="animal.status == 'E'" id = 'statusText'>Endangered</p>
@@ -85,9 +85,10 @@ created:function() {
     color: #BE6160;
     margin: 0;
     padding-top: 0;
+    
 }
 
-#animalPic {
+#homeAnimalPic {
     width: 200px;
     height: 200px; 
     border-radius: 50%;
@@ -108,6 +109,7 @@ created:function() {
              0px 8px 13px rgba(0,0,0,0.1),
              0px 18px 23px rgba(0,0,0,0.1); 
     margin-bottom: 0;
+    border: 1px solid white;
 }
 
 

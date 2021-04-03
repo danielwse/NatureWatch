@@ -22,7 +22,10 @@ export default {
     font-weight: 100;
     color: white;
     padding:0;
-    margin: 0;
+    margin-left:70px;
+    margin-right:0;
+    margin-top:0;
+    margin-bottom: 0;
 }
 
 
@@ -31,7 +34,7 @@ export default {
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
-    height:200px;
+    height:180px;
 }
 
 </style>

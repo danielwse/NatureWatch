@@ -168,7 +168,7 @@ export default {
   border: 1px solid white;
   display: flex;
   justify-content: center;
-  background: lightgreen;
+  background: #C0EFF6;
 }
 
 .progressBarAndText {
@@ -199,7 +199,7 @@ export default {
 .card2 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  background: lightgrey;
+  background: #A5CBAF;
   display: inline-block;
 }
 .card1 img {
