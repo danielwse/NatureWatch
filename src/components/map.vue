@@ -50,5 +50,7 @@ export default {
 <style scoped>
 #mapContainer{
     height:95vh;
+    z-index: -1;
+    position: relative;
 }
 </style>

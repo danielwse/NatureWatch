@@ -8,7 +8,8 @@ import Notfound_F from './components/Notfound_F.vue'
 import QuizCover from './components/QuizCover.vue'
 import Questions from './components/Questions.vue'
 import QuizResult from './components/QuizResult.vue'
-import ForestContent from './components/ForestHome.vue'
+import ForestContent from './components/ForestContent.vue'
+import ForestHome from './components/ForestHome.vue'
 
 
 export default[
@@ -18,7 +19,7 @@ export default[
     { path: '/animal_ce', name: 'CE', component: AnimalContent},
     { path: '/animal_e', name: 'E', component: AnimalContent},
     { path: '/animal_v', name: 'V', component: AnimalContent},
-    { path: '/forests', name: 'Forests', component: ForestContent},
+    { path: '/forests', name: 'Forests', component: ForestHome},
     { path: '/forests/Amazon', name: "Amazon Rainforest", component: ForestContent},
     { path: '/forests/Congo', name: "Congo Basin", component:ForestContent},
     { path: '/forests/Bosawas', name: "Nicaragua Bosawás Biosphere Reserve", component: ForestContent},
