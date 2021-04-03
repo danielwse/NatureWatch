@@ -17,14 +17,12 @@
       <section class="modal-body">
         <slot name="body">
           <div>Email </div>
-          <input type="email" v-model="user.email"><br>
+          <input type="email" placeholder="Key in email address" v-model="user.email"><br>
           <div>Username </div>
-          <input type="email" v-model="user.name"><br>
+          <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
-          <input type="password" v-model="user.password"><br>
-          <button v-on:click="confirm">Confirm</button>
-          <div v-show="errorMsg" style="color:red">This email has been registered already!</div>
-          <div v-show="successMsg" style="color:green">Registered successfully!Go back to sign in!</div>
+          <input type="password" placeholder="Key in email address" v-model="user.password"><br><br>
+          <button class="btn-green" v-on:click="register">Confirm</button>
         </slot>
        </section>
 
@@ -39,6 +37,7 @@
 
 <script>
 import database from "../firebase.js"
+import firebase from "firebase"
 
   export default {
     name: 'Modal2',
@@ -47,38 +46,35 @@ import database from "../firebase.js"
     data() {
       return {
         user: {
-          email:'',
-          password:'',
           name:'',
           trees:0,
           chanceLeft:2,
+          questionsList:["01","02","03","04","05","06","07","08","09","10"],
         },
-        errorMsg:false,
-        successMsg:false,
       }
     },
     methods: {
       close() {
         this.$emit('close');
       },
-      confirm:function() {
-        var count=1;
-        database.collection('Users').get().then(snapshot => {
-          snapshot.forEach(doc => {
-              count++;
-            if (doc.data().email == this.user.email) {
-                this.errorMsg=true;
-            }
+
+      register() {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .then(() => {
+            alert('Successfully registered! Please login.');
+            var uid=firebase.auth().currentUser.uid;
+ 
+            console.log(this.user.questionsList);
+            database.collection('Users').doc(uid).set(this.user);
+            this.$emit('close');
           })
-        })
-        if (!this.errorMsg) {
-            count++;
-            database.collection('Users').doc(count.toString()).set(this.user);
-            this.errorMsg = false;
-            this.successMsg = true;
-        }
+          .catch(error => {
+            alert(error.message);
+          });
       }
-    },
+    }
   };
 </script>
 

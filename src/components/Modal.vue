@@ -17,11 +17,10 @@
       <section class="modal-body">
         <slot name="body">
           <div>Email </div>
-          <input type="email" v-model="user.email"><br>
+          <input type="email" placeholder="Key in email address" v-model="user.email"><br>
           <div>Password </div>
-          <input type="password" v-model="user.password"><br>
-          <button v-on:click="confirm">Confirm</button>
-          <div v-if="errorMsg" style="color:red">Wrong email or password!</div>
+          <input type="password" placeholder="Key in password" v-model="user.password"><br><br>
+          <button v-on:click="login" class="btn-green">Confirm</button>
         </slot>
        </section>
 
@@ -39,8 +38,8 @@
 </template>
 
 <script>
-import database from "../firebase.js"
 import Modal2 from "./Modal2.vue"
+import firebase from "firebase"
 
   export default {
     name: 'Modal',
@@ -52,11 +51,7 @@ import Modal2 from "./Modal2.vue"
         user: {
           email:'',
           password:'',
-          name:'',
-          trees:0,
-          chanceLeft:2,
         },
-        errorMsg:false,
         isModalVisible: false,
       }
     },
@@ -70,22 +65,18 @@ import Modal2 from "./Modal2.vue"
       closeModal() {
         this.isModalVisible = false;
       },
-      confirm:function() {
-        var unmatched=1;
-        database.collection('Users').get().then(snapshot => {
-          snapshot.forEach(doc => {
-            if (doc.data().email == this.user.email) {
-              if (doc.data().password == this.user.password) {
-                unmatched=0;
-                this.user.name=doc.data().name;
-                this.user.trees=doc.data().trees;
-                this.$router.push({name:'Questions',params:{user:this.user}})
-              }
-            }
+      login() {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(this.user.email, this.user.password)
+          .then(() => {
+            alert('Successfully logged in');
+            this.$router.push('/Questions');
           })
-        })
-        if (unmatched==1) this.errorMsg=true;
-      }
+          .catch(error => {
+            alert(error.message);
+          });
+      },
     },
   };
 </script>

@@ -1,8 +1,9 @@
 <template>
     <div>
+        <PlayHeader></PlayHeader><br><br>
         <div v-bind:style="{color:'#FFFFFF', fontSize:'64px'}">Question {{index+1}} </div><br>
         <div v-bind:style="{color:'#45A025', fontSize:'36px'}">
-            {{questions[this.index].cont}}
+            {{questions[index].cont}}
         </div><br><br>
         <div class="bigWhite">
         <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index].a}}</div>
@@ -17,13 +18,18 @@
 
 <script>
 import database from "../firebase.js"
+import PlayHeader from './Headers/Play.vue';
+import firebase from "firebase"
 
 export default {
     name: 'Questions',
-
+    components: {
+        PlayHeader
+    },
     data() {
         return {
             questions: [],
+            questionsList:[],
             index: 0,
             selectedAnswer: "",
             correctAnswer: [],
@@ -45,7 +51,39 @@ export default {
         }
     },
     methods: {
-        fetchQuestions:function() {
+        async fetchQuestions() {
+            var uid = firebase.auth().currentUser.uid;
+            console.log(uid);
+            
+            this.questionsList = await database.collection('Users').doc(uid).get().then(doc => 
+               doc.data().questionsList);
+               console.log("this is list");
+               console.log(this.questionsList);
+   
+               
+            for (let i=0;i<5;i++) {    
+                var index = Math.floor(Math.random() * this.questionsList.length);
+                console.log("index is ",index);
+                console.log("question list is ",this.questionsList);
+
+                var id = this.questionsList[index];
+                this.questionsList.splice(index,1);
+
+                database.collection('Questions').doc(id).get().then(doc=> {
+                    this.questions.push(doc.data());
+                    console.log(doc.data());
+                    database.collection('Answers').doc(doc.id).get().then(doc => {
+                        this.correctAnswer.push(doc.data().answer);
+                            console.log(doc.data().answer);
+
+                    })
+                })      
+            }
+
+            database.collection('Users').doc(uid).update({
+                questionsList: this.questionsList,
+            });
+            /* 
             database.collection('Questions').get().then(snapshot => {
                 snapshot.forEach(doc => {
                     this.questions.push(doc.data());
@@ -58,11 +96,12 @@ export default {
                         }
                     })
                 })
-            })
+            })*/
         },
         matchAnswer:function(key) {
             var cor = this.correctAnswer[this.index];
             this.selectedAnswer = key;
+            console.log("correct answer is ",cor, "Selected is ",key);
 
             if (cor == key) {
                 this.counter++;
@@ -82,6 +121,16 @@ export default {
                 this.selectedAnswer= "";
                 this.next=false;
             } else {
+                var uid=firebase.auth().currentUser.uid;
+                database.collection('Users').doc(uid).update({
+                    chanceLeft: firebase.firestore.FieldValue.increment(-1)
+                });
+
+                if (this.counter==5) {
+                    database.collection('Users').doc(uid).update({
+                        trees: firebase.firestore.FieldValue.increment(1)
+                    });
+                }
                 this.$router.push({name:'Result',params:{counter:this.counter}})  
             }   
         }
@@ -89,9 +138,9 @@ export default {
     },
 
     created() {
-        document.body.style.backgroundColor = "#343434"
+        document.body.style.backgroundColor = "#343434" 
         this.fetchQuestions()
-    }
+    },
 }
 </script>
 

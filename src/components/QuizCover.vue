@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PlayHeader></PlayHeader>
+        <PlayHeader></PlayHeader><br><br>
         <span class="bigWhite">Welcome to </span>
         <span class="lightGreen">Play to Plant!</span><br>
         <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
@@ -18,6 +18,9 @@
 <script>
 import Modal from './Modal.vue';
 import PlayHeader from './Headers/Play.vue';
+import firebase from "firebase";
+import database from "../firebase.js"
+
 export default {
     name: 'QuizCover',
     components: {
@@ -27,15 +30,33 @@ export default {
     data() {
         return {
             isModalVisible: false,
+            date:'',
+            lastSignIn:'',
         }
     },
     methods:{
-        showModal() {
-            this.isModalVisible = true;
+        showModal:function() {
+            if (user!=null) {
+                console.log(firebase.auth().currentUser);
+           
+                const today = new Date();
+                this.date = today.getDate();
+                const last = firebase.auth().currentUser.metadata.lastSignInTime;
+                this.lastSignin = last.substring(5,7);
+    
+                var user = firebase.auth().currentUser;
+                if (this.date-this.lastSignin>0) {
+                    database.collection("Users").doc(user.uid).update({
+                        chanceLeft:2
+                    })
+                }
+                this.$router.push('/Questions');
+            }
+            else this.isModalVisible = true;
         },
         closeModal() {
             this.isModalVisible = false;
-        }
+        },
     },
     created:function() {
         document.body.style.backgroundColor = "#343434"
