@@ -8,10 +8,10 @@
         Explore
         <br><br>
         <div id="left">
-          <button id="forest" style="cursor: pointer;"> Forests </button>
+          <button v-on:click="route('Forests')" id="forest" style="cursor: pointer;"> Forests </button>
         </div>
         <div id="right">
-          <button v-on:click="route()" id="animals" style="cursor: pointer;"> Animals </button>
+          <button v-on:click="route('AnimalHome')" id="animals" style="cursor: pointer;"> Animals </button>
         </div>
       </div>
       
@@ -24,8 +24,8 @@
 
 export default {
   methods : {
-    route() {
-      this.$router.push({name: 'AnimalHome'})
+    route(name) {
+      this.$router.push({name: name})
     }
   }
 }

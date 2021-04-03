@@ -1,6 +1,6 @@
 <template>
     <div id="top">
-        <p id="head">Atlantic Rainforest</p>
+        <p id="head">{{ forestName }}</p>
         <app-header></app-header>
     </div>
 </template>
@@ -11,6 +11,11 @@ import Header from './Header.vue'
 export default {
      components:{
         'app-header':Header
+     },
+     props : {
+         forestName : {
+             type: String
+         }
      }
 
 }
@@ -18,19 +23,22 @@ export default {
 <style scoped>
 #head{
     text-align: left;
-    font-size: 5em;
+    font-size: 4em;
     font-weight: 100;
     color: white;
     padding:0;
-    margin: 0;
+    margin-left:70px;
+    margin-right:0;
+    margin-top:0;
+    margin-bottom: 0;
 }
 
 
 #top{
-    background-image: url("https://64.media.tumblr.com/d99f5cfc707b60afda9f1553a2542d54/tumblr_inline_nqeckmQ1XG1tn2sk4_540.png");
+    background-image: url("https://www.coillte.ie/media/2016/10/forest-header.png");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
-    height:200px;
+    height:180px;
 }
 </style>

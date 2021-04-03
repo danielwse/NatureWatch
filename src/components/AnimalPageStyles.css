@@ -1,0 +1,280 @@
+.evenAnimal {
+    width: 100%;
+    height: 100%;
+    background: #343434;
+    display: flex;
+}
+
+.oddAnimal {
+    width: 100%;
+    height: 100%;
+    background: #9AD1CE;
+    display: flex;
+}
+
+#distributionImg {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+}
+
+#oddLeftInTheWild {
+    position: relative;
+    border: 1px solid white;
+    width: auto;
+    height: auto;
+    top: 5px;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    color: #3E3434;
+}
+
+#evenLeftInTheWild {
+    position: relative;
+    border: 1px solid white;
+    width: auto;
+    height: auto;
+    top: 5px;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    color: #C4C4C4;
+}
+
+#distribution {
+    position: relative;
+    top: 10px;
+    border: 1px solid white;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+    color: #BE6160;
+}
+
+.animalCircle-with-text {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 300%;
+    border: 2px solid #666;
+    color: black;
+    background-color: aqua;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: bold;
+}
+
+
+.left {
+    width: 30%;
+    height: 100%;
+    display: block;
+    float: left;
+    border: 1px solid yellow;
+ }
+.right {
+    width: 30%;
+    height: 100%;
+    float: right;
+    display: block;
+    border: 1px solid red;
+}
+.middle {
+    width: 40%;
+    height: 100%;
+    display: block;
+    border: 1px solid blue;
+ }
+
+#oddAnimalMainText {
+    position: relative;
+    padding: 10px;
+    
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 100%;
+    line-height: 25px;
+    text-align: center;
+    color:#3E3434;
+}
+
+#evenAnimalMainText {
+    position: relative;
+    padding: 10px;  
+    
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 100%;
+    line-height: 25px;
+    text-align: center;
+    color:white;
+}
+
+
+#threatText {
+    position: relative;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    top: 30px;
+    border: 1px solid white;
+    color: #BE6160;
+    margin-bottom: 0;
+}
+
+#oddAnimalThreats {
+    position: relative;
+    font-family: Mohave;    
+    font-style: bold;
+    font-weight: 500px;
+    font-size: 24px;
+    line-height: 30px;
+    top: 30px;
+    text-align: center;
+    color: #3E3434;
+    border: 1px solid white;
+    margin: 0;
+    padding-top: 0;
+}
+
+#evenAnimalThreats {
+    position: relative;
+    font-family: Mohave;    
+    font-style: bold;
+    font-weight: 500px;
+    font-size: 24px;
+    line-height: 30px;
+    top: 30px;
+    text-align: center;
+    color: #c4c4c4;
+    border: 1px solid white;
+    margin: 0;
+    padding-top: 0;
+
+}
+#animalPic {
+    position: relative;
+    width: 250px;
+    height: 250px; 
+    
+    border-radius: 50%;
+    border: 1px solid white;
+    object-fit:cover;
+}
+
+
+#oddAmlGenericNames {
+    border: 1px solid white;
+    position: relative;
+    width: auto;
+    height: auto;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 67px;
+    text-align: center;
+    color: #3E3434;
+    border: 1px solid #C4C4C4;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 0;
+}
+
+#evenAmlGenericNames {
+    border: 1px solid white;
+    position: relative;
+    width: auto;
+    height: auto;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 67px;
+    text-align: center;
+    color: #c4c4c4;
+    border: 1px solid #C4C4C4;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1); 
+    margin-bottom: 0;
+}
+
+#oddScientificNames {
+    position: relative;
+    font-family: Mohave;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid white;
+    color: #3E3434;
+    margin: 0;
+    padding-top: 0;
+}
+
+#evenScientificNames {
+    position: relative;
+    font-family: Mohave;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid white;
+    color: #C4C4C4;
+    margin: 0;
+    padding-top: 0;
+}
+
+#donationText {
+    position: relative;
+    border: 1px solid white;
+    max-height: 100%;
+    max-width: 100%;
+    font-family: Mohave;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: #BE6160;
+    margin-bottom: 0;
+}
+
+#donationLinks {
+    position: relative;
+    display: inline-block;
+    max-height: 30%;
+    max-width: 100%;
+    border: 1px solid white;
+    margin: 0;
+    padding-top: 0;
+    
+}
+
+#donationLinks img {
+    border: 1px solid white;
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    object-fit: contain;
+}
