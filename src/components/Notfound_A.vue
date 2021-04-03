@@ -60,6 +60,6 @@ export default {
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
-    height:200px;
+    height:180px;
 }
 </style>
