@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PlayHeader></PlayHeader>
+        <PlayHeader></PlayHeader><br><br>
         <span class="bigWhite">Welcome to </span>
         <span class="lightGreen">Play to Plant!</span><br>
         <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>

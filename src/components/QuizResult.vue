@@ -1,5 +1,6 @@
 <template>
     <div>
+        <PlayHeader></PlayHeader><br><br>
         <div v-show="counter==5">
             <div class="bigWhite">Congratulations!</div>
             <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}"> Your scored </span>
@@ -24,9 +25,14 @@
 
 <script>
 import database from "../firebase.js"
+import PlayHeader from './Headers/Play.vue';
 import firebase from "firebase"
+
 export default {
     name: 'QuizResult',
+    components: {
+        PlayHeader
+    },
     props: {
         counter: {},
     },
@@ -49,14 +55,12 @@ export default {
     },
 
     created:function() {
-        document.body.style.backgroundColor = "#343434"
-    },
-    beforeCreate: function() {
+        document.body.style.backgroundColor = "#343434";
+
         var uid=firebase.auth().currentUser.uid;
-        database.collection('Users').doc(uid).get().then(doc => {
+        database.collection('Users').doc(uid).onSnapshot({includeMetadataChanges:true}, (doc)=> {
             this.chances = doc.data().chanceLeft;
-            console.log(this.chances);
-        })
+        });
     }
 }
 </script>

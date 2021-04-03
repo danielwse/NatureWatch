@@ -49,6 +49,8 @@ import firebase from "firebase"
           name:'',
           trees:0,
           chanceLeft:2,
+          questionsList:["01","02","03","04","05","06","07","08","09","10"],
+          test:[],
         },
       }
     },
@@ -56,6 +58,17 @@ import firebase from "firebase"
       close() {
         this.$emit('close');
       },
+      /*
+      newQuestionsList:function() {
+        database.collection('Questions').get().then(snapshot => {
+          snapshot.forEach(doc => {
+            this.user.questionsList.push(String(doc.id));
+            this.user.test.push("01");
+            this.user.test.push("02");
+            console.log(doc.id);
+          })
+        });
+      },*/
       register() {
         firebase
           .auth()
@@ -63,6 +76,9 @@ import firebase from "firebase"
           .then(() => {
             alert('Successfully registered! Please login.');
             var uid=firebase.auth().currentUser.uid;
+            //fetch all available questions id
+ 
+            console.log(this.user.questionsList);
             database.collection('Users').doc(uid).set(this.user);
             this.$emit('close');
           })
