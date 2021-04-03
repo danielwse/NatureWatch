@@ -17,7 +17,7 @@
 
         <span class="smallWhite" v-show="chances<=0">No chance left today. Come tomorrow!</span>
         <span class="smallWhite" v-show="chances>0">You have {{chances}} chance left!</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px vertical-align:middle" v-on:click="redirect">
+        <img src="../assets/plant.svg" style="width:400px vertical-align:middle" v-on:click="redirect"><br><br>
         <button style="vertical-align:right" v-on:click="logout">LogOut</button>
     
     </div>
