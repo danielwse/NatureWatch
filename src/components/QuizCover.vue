@@ -1,8 +1,8 @@
 <template>
     <div>
-        <PlayHeader></PlayHeader><br><br>
+        <PlayHeader></PlayHeader><br><br><br>
         <span class="bigWhite">Welcome to </span>
-        <span class="lightGreen">Play to Plant!</span><br>
+        <span class="lightGreen">Play to Plant!</span><br><br>
         <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
             required to plant a tree in the Amazon Rainforest!</span><br><br>
         <span class="green">In collaboration with</span> nbsp

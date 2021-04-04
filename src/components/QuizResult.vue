@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PlayHeader></PlayHeader><br><br>
+        <PlayHeader></PlayHeader><br><br><br>
         <div v-show="counter==5">
             <div class="bigWhite">Congratulations!</div>
             <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}"> Your scored </span>
@@ -9,7 +9,7 @@
         </div>
 
         <div v-show="counter!=5">
-        <div class="bigWhite">Try again!</div>
+        <div class="bigWhite">Try again!</div><br><br><br>
             <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}"> Your scored </span>
             <span v-bind:style="{color:'#9BDF84', fontSize:'48px'}">{{counter}}/5 </span>
             <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}">! {{5-counter}} more score(s) to plant 1 tree!</span><br>
