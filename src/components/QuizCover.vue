@@ -17,8 +17,15 @@
                         <span v-bind:style="{fontSize:'24px'}">Hi, {{name}}!</span>
                     </header>
                     <footer class="modal-footer">
+                        <img src="../assets/stats.png" width="50px">
                         <router-link v-bind:style="{color:'white'}" to="/userdashboard" exact>Click to see the statistics!</router-link>
-                        <div v-on:click="logout">logout</div>
+                    </footer>
+                    <footer class="modal-footer">
+                        <img src="../assets/exit.png" width="50px">
+                        <span v-on:click="logout">logout</span>
+                    </footer>
+                    <footer class="modal-footer">
+                        <img src="../assets/arrow.svg" width="50px">
                         <div v-on:click="changeUser">change account</div>
                     </footer>
                 </div>
@@ -160,16 +167,15 @@ export default {
     justify-content: space-evenly;
     font-size:25px;
     background-color: rgb(158 191 81);
-    border-radius: 80px 0px 100px 0px;
+    border-radius: 100px 0px 100px 0px;
   }
 
   .modal-footer {
-    border-top: 1px solid #eeeeee;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: left;
+    font-size:18px;
+    border-top: 1px solid white;
+    justify-content: space-evenly;
     background: rgb(114 170 74);
-    border-radius: 60px 0px 100px 0px;
+    border-radius: 100px 0px 100px 0px;
   }
 
 
