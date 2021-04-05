@@ -4,16 +4,19 @@ based on PageContent
  */
 <template>
 <div>
-    <div v-if='this.$route.name == "CE"'>
+    <div v-if='this.$route.name == "CE" || this.$route.params.status == "CE"'>
         <CEHeader></CEHeader>
     </div>
-    <div v-else-if="this.$route.name == 'E'">
+    <div v-else-if="this.$route.name == 'E' || this.$route.params.status == 'E'">
         <EHeader></EHeader>
     </div>
     <div v-else>
         <VHeader></VHeader>
     </div>
-    <div v-for='(animal1,index) in animals' :key='index'>
+    <div>
+        <SearchBar></SearchBar>
+    </div>
+    <div v-for='(animal1,index) in animals' :key='index' id='back'>
  <PageContent v-if='index % 2 == 0' :animal='animal1' :animalIndex='evenAnimal'></PageContent>
  <PageContent v-else :animal='animal1' :animalIndex='oddAnimal'></PageContent>
  </div>
@@ -26,6 +29,7 @@ import database from '../firebase.js';
 import CEHeader from './Headers/Animal_ce.vue';
 import EHeader from './Headers/Animal_e.vue';
 import VHeader from './Headers/Animal_v.vue';
+import SearchBar from './Headers/SearchBar.vue';
 
 export default {
     data() {
@@ -41,7 +45,8 @@ export default {
         PageContent,
         CEHeader,
         EHeader,
-        VHeader
+        VHeader,
+        SearchBar
     },
 
     methods : {
@@ -73,4 +78,11 @@ created:function() {
 </script>
 
 <style scoped>
+html, body {
+    height: 100%;
+}
+
+.back {
+    height: 100%;
+}
 </style>

@@ -23,7 +23,7 @@ export default {
 <style scoped>
 #head{
     text-align: left;
-    font-size: 4em;
+    font-size: 5em;
     font-weight: 100;
     color: white;
     padding:0;
@@ -31,6 +31,7 @@ export default {
     margin-right:0;
     margin-top:0;
     margin-bottom: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 

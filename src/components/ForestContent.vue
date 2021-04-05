@@ -19,7 +19,7 @@ export default {
             ],
             evenForest : 'evenForest',
             oddForest : 'oddForest',
-            name : this.$route.name,
+            name : this.$route.params.name,
         }
     },
 
@@ -37,7 +37,7 @@ export default {
     })
 })
              } else {
-                 var forestName = this.$route.name;
+                 var forestName = this.$route.params.name;
                  database.collection('Forests').where("genericName", '==', forestName).get().then(snapshot => {
                     snapshot.docs.forEach(doc => {
                         this.forests.push(doc.data());
