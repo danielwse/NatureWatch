@@ -1,15 +1,15 @@
 <template>
     <div>
-        <PlayHeader></PlayHeader><br><br><br>
-        <div v-bind:style="{color:'#FFFFFF', fontSize:'64px'}">Question {{index+1}} </div><br><br><br>
+        <PlayHeader></PlayHeader><br><br>
+        <div v-bind:style="{color:'#FFFFFF', fontSize:'64px'}">Question {{index+1}} </div><br>
         <div v-bind:style="{color:'#45A025', fontSize:'36px'}">
             {{questions[index].cont}}
-        </div><br><br><br>
+        </div><br>
         <div class="bigWhite">
-        <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index].a}}</div><br><br>
-        <div id="b" v-on:click="matchAnswer('b')">b.{{questions[index].b}}</div><br><br>
-        <div id="c" v-on:click="matchAnswer('c')">c.{{questions[index].c}}</div><br><br>
-        <div id="d" v-on:click="matchAnswer('d')">d.{{questions[index].d}}</div><br><br> 
+        <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index].a}}</div>
+        <div id="b" v-on:click="matchAnswer('b')">b.{{questions[index].b}}</div>
+        <div id="c" v-on:click="matchAnswer('c')">c.{{questions[index].c}}</div>
+        <div id="d" v-on:click="matchAnswer('d')">d.{{questions[index].d}}</div>
         </div><br>
         <button v-show="next" v-bind:style="{fontSize:'24px'}" v-on:click="updateQuestion()">Next</button>
 
@@ -146,7 +146,8 @@ export default {
 
 <style scoped>
  * {
-        font-family: "Mohave"
+        font-family: "Mohave";
+        line-height:1.5;
     }
  .bigWhite {
         color:#FFFFFF;

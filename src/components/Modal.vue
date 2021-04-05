@@ -40,6 +40,7 @@
 <script>
 import Modal2 from "./Modal2.vue"
 import firebase from "firebase"
+import database from "../firebase.js"
 
   export default {
     name: 'Modal',
@@ -70,8 +71,26 @@ import firebase from "firebase"
           .auth()
           .signInWithEmailAndPassword(this.user.email, this.user.password)
           .then(() => {
+            const today = new Date();
+            this.date = today.getDate();
+            const last = firebase.auth().currentUser.metadata.lastSignInTime;
+            this.lastSignin = last.substring(5,7);
+
+            var user = firebase.auth().currentUser;
+            if (this.date-this.lastSignin>0) {
+                database.collection("Users").doc(user.uid).update({
+                    chanceLeft:2,
+                    questionsList:["01","02","03","04","05","06","07","08","09","10"],
+                })
+            }
             alert('Successfully logged in');
-            this.$router.push('/Questions');
+            database.collection("Users").doc(user.uid).get().then(doc=> {
+              if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
+              else {
+                this.close();
+                alert("Chance used up today.Come tomorrow!");
+              }
+            });
           })
           .catch(error => {
             alert(error.message);
