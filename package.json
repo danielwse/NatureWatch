@@ -27,7 +27,8 @@
     "vue-router": "^3.5.1",
     "vue-world-map": "^0.1.1",
     "vue2-leaflet": "^2.7.0",
-    "xlsx": "^0.16.9"
+    "xlsx": "^0.16.9",
+    "express": "*"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
