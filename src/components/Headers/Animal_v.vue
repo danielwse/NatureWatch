@@ -2,15 +2,18 @@
     <div id="top">
         <p id="head">Vulnerable</p>
         <app-header></app-header>
+        <SearchBar></SearchBar>
     </div>
 </template>
 
 <script>
 import Header from './Header.vue'
+import SearchBar from './SearchBar.vue'
 
 export default {
      components:{
-        'app-header':Header
+        'app-header':Header,
+        SearchBar
      }
 
 }
@@ -26,11 +29,12 @@ export default {
     margin-right:0;
     margin-top:0;
     margin-bottom: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
 #top{
-    background-image: url("https://coverfiles.alphacoders.com/487/48714.jpg");
+    background-image: url("https://www.freewebheaders.com/wp-content/gallery/wildlife/ring-tailed-lemur-header.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
