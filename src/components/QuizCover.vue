@@ -91,11 +91,15 @@ export default {
             this.isModalVisible = false;
         },
       fetchUser:function(){
-            var uid = firebase.auth().currentUser.uid;
-            if (uid!=null) {
-                console.log(uid);
-                database.collection('Users').doc(uid).get().then(doc => this.name = doc.data().name);
-            }
+          firebase.auth().onAuthStateChanged(user=> {
+              if (user) {
+                var uid = firebase.auth().currentUser.uid;
+                if (uid!=null) {
+                    console.log(uid);
+                    database.collection('Users').doc(uid).get().then(doc => this.name = doc.data().name);
+                }
+              }
+          })    
         },
         logout:function() {
             firebase.auth().signOut().then(() => {

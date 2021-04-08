@@ -71,20 +71,10 @@ import database from "../firebase.js"
           .auth()
           .signInWithEmailAndPassword(this.user.email, this.user.password)
           .then(() => {
-            const today = new Date();
-            this.date = today.getDate();
-            const last = firebase.auth().currentUser.metadata.lastSignInTime;
-            this.lastSignin = last.substring(5,7);
-
-            var user = firebase.auth().currentUser;
-            if (this.date-this.lastSignin>0) {
-                database.collection("Users").doc(user.uid).update({
-                    chanceLeft:2,
-                    questionsList:["01","02","03","04","05","06","07","08","09","10"],
-                })
-            }
             alert('Successfully logged in');
+            var user = firebase.auth().currentUser;
             database.collection("Users").doc(user.uid).get().then(doc=> {
+              this.updateAttributes();
               if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
               else {
                 this.close();
@@ -95,7 +85,23 @@ import database from "../firebase.js"
           .catch(error => {
             alert(error.message);
           });
+          
       },
+      updateAttributes:function() {
+        const today = new Date();
+        this.date = today.getDate();
+        var user = firebase.auth().currentUser;
+        const last = user.metadata.lastSignInTime;
+        this.lastSignin = last.substring(5,7);
+        console.log(user.uid," ",last);
+
+        if (this.date-this.lastSignin>0) {
+            database.collection("Users").doc(user.uid).update({
+                chanceLeft:2,
+                questionsList:["01","02","03","04","05","06","07","08","09","10"],
+            })
+        }
+      }
     },
   };
 </script>
