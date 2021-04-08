@@ -97,8 +97,24 @@ import database from "../firebase.js"
 
         if (this.date-this.lastSignin>0) {
             database.collection("Users").doc(user.uid).update({
-                chanceLeft:2,
-                questionsList:["01","02","03","04","05","06","07","08","09","10"],
+              chanceLeft:2,
+              questionsList:["01","02","03","04","05","06","07","08","09","10",
+                              "11","12","13","14","15","16","17","18","19","20",
+                              "21","22","23","24","25","26","27","28","29","30"],
+            })
+        }
+        if (this.date-this.lastSignin==1) {
+            database.collection("Users").doc(user.uid).update({
+              streak: firebase.firestore.FieldValue.increment(1)
+            })
+            database.collection("Users").doc(user.uid).get().then(doc=> {
+              var ls = doc.data().longestStreak;
+              var s = doc.data().streak;
+              if (ls<s) {
+                database.collection("Users").doc(user.uid).update({
+                  longestStreak: s
+                })
+              }
             })
         }
       }
