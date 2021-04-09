@@ -52,8 +52,11 @@ import database from "../firebase.js"
         user: {
           email:'',
           password:'',
+          id:'',
         },
         isModalVisible: false,
+        date:'',
+        lastSignIn:'',
       }
     },
     methods: {
@@ -67,56 +70,82 @@ import database from "../firebase.js"
         this.isModalVisible = false;
       },
       login() {
+
         firebase
           .auth()
           .signInWithEmailAndPassword(this.user.email, this.user.password)
           .then(() => {
             alert('Successfully logged in');
             var user = firebase.auth().currentUser;
-            database.collection("Users").doc(user.uid).get().then(doc=> {
-              this.updateAttributes();
-              if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
-              else {
-                this.close();
-                alert("Chance used up today.Come tomorrow!");
-              }
-            });
+            this.updateAttributes(this.lastSignIn).then(()=> {
+              database.collection("Users").doc(user.uid).update({
+                lastSignInTime: user.metadata.lastSignInTime,
+              })
+            }).then(()=> {
+              database.collection("Users").doc(user.uid).get().then(doc=> {
+                if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
+                else {
+                  this.close();
+                  alert("Chance used up today.Come tomorrow!");
+                }
+              });
+            })
           })
           .catch(error => {
             alert(error.message);
           });
           
       },
-      updateAttributes:function() {
-        const today = new Date();
-        this.date = today.getDate();
-        var user = firebase.auth().currentUser;
-        const last = user.metadata.lastSignInTime;
-        this.lastSignin = last.substring(5,7);
-        console.log(user.uid," ",last);
-
-        if (this.date-this.lastSignin>0) {
-            database.collection("Users").doc(user.uid).update({
-              chanceLeft:2,
-              questionsList:["01","02","03","04","05","06","07","08","09","10",
-                              "11","12","13","14","15","16","17","18","19","20",
-                              "21","22","23","24","25","26","27","28","29","30"],
-            })
-        }
-        if (this.date-this.lastSignin==1) {
-            database.collection("Users").doc(user.uid).update({
-              streak: firebase.firestore.FieldValue.increment(1)
-            })
-            database.collection("Users").doc(user.uid).get().then(doc=> {
-              var ls = doc.data().longestStreak;
-              var s = doc.data().streak;
-              if (ls<s) {
-                database.collection("Users").doc(user.uid).update({
-                  longestStreak: s
-                })
+      updateAttributes:function(lastSignIn) {
+        return new Promise(function(resolve) {
+          const today = new Date();
+          var date = today.getDate();
+          var user = firebase.auth().currentUser;
+          database.collection("Users").doc(user.uid).get().then(doc=> {
+            if (doc.data().lastSignInTime!="") {
+              console.log("last signin time from doc: ",doc.data().lastSignInTime);
+              lastSignIn=doc.data().lastSignInTime.substring(5,7)
+              console.log("Okie we got: ",lastSignIn);
+              }
+            }
+          ).then(()=> {
+              console.log(user.uid," ",lastSignIn);
+              console.log(lastSignIn.length);
+      
+              if (lastSignIn.length!=0) {
+                console.log("Not first time log in");
+            
+                if (date-lastSignIn>0) {
+                    database.collection("Users").doc(user.uid).update({
+                      chanceLeft:2,
+                      questionsList:["01","02","03","04","05","06","07","08","09","10",
+                                      "11","12","13","14","15","16","17","18","19","20",
+                                      "21","22","23","24","25","26","27","28","29","30"],
+                    })
+                }
+                if (date-lastSignIn==1) {
+                    database.collection("Users").doc(user.uid).update({
+                      streak: firebase.firestore.FieldValue.increment(1)
+                    })
+                    database.collection("Users").doc(user.uid).get().then(doc=> {
+                      var ls = doc.data().longestStreak;
+                      var s = doc.data().streak;
+                      if (ls<s) {
+                        database.collection("Users").doc(user.uid).update({
+                          longestStreak: s
+                        })
+                      }
+                    })
+                } else {
+                  database.collection("Users").doc(user.uid).update({
+                    streak:0
+                  })
+                }
               }
             })
-        }
+  
+          resolve();
+        })
       }
     },
   };

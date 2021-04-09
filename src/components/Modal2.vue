@@ -54,6 +54,7 @@ import firebase from "firebase"
                         "21","22","23","24","25","26","27","28","29","30"],
           streak:0,
           longestStreak:0,
+          lastSignInTime:'',
         },
       }
     },
@@ -68,8 +69,9 @@ import firebase from "firebase"
           .createUserWithEmailAndPassword(this.user.email, this.user.password)
           .then(() => {
             alert('Successfully registered! Please login.');
-            var uid=firebase.auth().currentUser.uid;
- 
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+
             console.log(this.user.questionsList);
             database.collection('Users').doc(uid).set(this.user);
             this.$emit('close');

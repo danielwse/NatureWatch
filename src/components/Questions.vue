@@ -54,6 +54,10 @@ export default {
         async fetchQuestions() {
             var uid = firebase.auth().currentUser.uid;
             console.log(uid);
+            database.collection('Users').doc(uid).update({
+                chanceLeft: firebase.firestore.FieldValue.increment(-1)
+            });
+            console.log("updated");
             
             this.questionsList = await database.collection('Users').doc(uid).get().then(doc => 
                doc.data().questionsList);
@@ -122,10 +126,7 @@ export default {
                 this.next=false;
             } else {
                 var uid=firebase.auth().currentUser.uid;
-                database.collection('Users').doc(uid).update({
-                    chanceLeft: firebase.firestore.FieldValue.increment(-1)
-                });
-
+            
                 if (this.counter==5) {
                     database.collection('Users').doc(uid).update({
                         trees: firebase.firestore.FieldValue.increment(1)

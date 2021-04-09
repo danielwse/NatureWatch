@@ -1,21 +1,20 @@
 <template>
     <div>
-        <div class="align1" v-if="userName">
+        <div class="align" v-if="userName">
             <header class="modal-header">
                 <img src="../assets/user_icon.png" width="50px">
                 <span v-bind:style="{fontSize:'24px'}">Hi, {{userName}}!</span>
             </header>
             <footer class="modal-footer" v-on:click="redirect">
                 <img src="../assets/stats.png" width="50px">
-                <span v-bind:style="{color:'white'}">Click to see the statistics!</span>  
+                <span v-bind:style="{color:'white'}">Click to see <br>the statistics!</span>  
             </footer>
             <footer class="modal-footer" v-on:click="logout">
                 <img src="../assets/exit.png" width="50px">
-                <span>logout</span>
+                <span>Click to logout</span>
             </footer>
         </div>
 
-        <div class="align2 smallWhite" v-if="!userName">Please login to start the quiz</div>
     </div>
 </template>
 
@@ -50,6 +49,7 @@ export default {
             firebase.auth().signOut().then(() => {
              alert('Safely signed out!');
              location.reload();
+             this.$router.push("/playtoplant");
            }).catch(error => {
              alert('Sign Out Error', error);
            });
@@ -65,15 +65,9 @@ export default {
 </script>
 
 <style scoped>
-.align1 {
+.align {
     position: relative;
     bottom:240px;
-    float: right;
-}
-
-.align2 {
-    position: relative;
-    right:10%;
     float: right;
 }
 
@@ -94,7 +88,8 @@ export default {
 
   .modal-footer {
     font-size:18px;
-    border-top: 1px solid white;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
     justify-content: space-evenly;
     background: rgb(114 170 74);
     border-radius: 100px 0px 100px 0px;

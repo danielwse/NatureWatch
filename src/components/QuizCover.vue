@@ -49,7 +49,7 @@ export default {
            
                 const today = new Date();
                 this.date = today.getDate();
-                const last = firebase.auth().currentUser.metadata.lastSignInTime;
+                var last = firebase.auth().currentUser.metadata.lastSignInTime;
                 this.lastSignin = last.substring(5,7);
     
                 if (this.date-this.lastSignin>0) {
