@@ -51,7 +51,7 @@ export default {
 })
          },
                route:function(status, genericName) {
-        this.$router.push({name: status, params: {name: genericName}})
+        this.$router.push({name: 'indivAnimal', params: {name: genericName, status: status}})
       }
 
 
@@ -77,7 +77,7 @@ created:function() {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    height: 1200px;
+    height: 2000px;
     
 
 }

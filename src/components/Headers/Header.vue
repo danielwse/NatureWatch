@@ -78,9 +78,6 @@ l
   color: white;
 }
 
-li a:hover {
-  color: black;
-}
 li.dropdown {
   display: inline-block;
 }
