@@ -1,7 +1,6 @@
 <template>
 <div>
     <ForestHeader v-bind:forestName = 'name'></ForestHeader>
-    
     <div class="container">
         <div class = "row">
             <div class = "col-12">
@@ -95,6 +94,7 @@ export default {
 .container{
     top:10vh;
     position:relative;
+    z-index: -1;
 }
 
 </style>
