@@ -5,7 +5,7 @@ for many animals.
 
 <template>
      <div v-bind:class= 'animalIndex'>
-        <div class = 'left'>
+        <div class = 'leftAnimal'>
         <img id = 'animalPic' :src='animal.imageURL'>
        <p v-if= "animalIndex == 'oddAnimal'" id = 'oddAmlGenericNames' >{{ animal.genericName}}</p>
        <p v-else id = 'evenAmlGenericNames'>{{ animal.genericName}}</p>
@@ -15,10 +15,10 @@ for many animals.
             <div id = 'donationLinks'>
                 <a :href= 'animal.donationURL1' target="_blank"><img :src ='animal.donationURLImage1'></a>
                 <a :href = 'animal.donationURL2' target="_blank"><img :src ='animal.donationURLImage2'></a>
-                <a :href = 'animal.donationURL3' target="_blank"><img :src ='animal.donationURLImage3'></a>
+                <a v-if="typeof(animal.donationURL3) != 'undefined'" :href = 'animal.donationURL3' target="_blank"><img :src ='animal.donationURLImage3'></a>
             </div>
         </div>
-        <div class = 'middle'>
+        <div class = 'middleAnimal'>
             <span v-for="(para, index) in animal.descriptionParas" :key='index'>
             <p v-if= "animalIndex == 'oddAnimal'" id = 'oddAnimalMainText'> {{ para }} </p>
             <p v-else id = 'evenAnimalMainText'> {{ para }}</p>
@@ -29,7 +29,7 @@ for many animals.
             <p v-else id = 'evenAnimalThreats'> {{ threat }}</p>
             </div>
         </div>
-        <div class = 'right'>
+        <div class = 'rightAnimal'>
             <div class="animalCircle-with-text"> {{animal.numbersLeft}}
             </div>
                 <p v-if= "animalIndex == 'oddAnimal'" id = 'oddLeftInTheWild'> Left In The Wild </p>

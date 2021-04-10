@@ -37,7 +37,7 @@ body{
 }
 .img {
   font-size: 50px;
-  background:url('https://media.istockphoto.com/photos/atlantic-forest-in-brazil-mata-atlantica-picture-id1044285108?k=6&m=1044285108&s=170667a&w=0&h=FPS-c6_AVNDsNIk4jQNdW4IcqOQaQdg5HFvnMp8Piys=');
+  background:url('../assets/home2.jpg');
   width:100%;
   height: 100vh;
   background-size: cover;
@@ -50,6 +50,7 @@ body{
 }
 #welcome{
   color:#FFF2f2;
+  font-weight: bold;
 }
 #nature{
   color: #f9d451;
@@ -77,13 +78,48 @@ body{
   top:20vh;
   position:relative;
   color:#FFFFFF;
+  font-weight: 600;
+
 }
 
 button{
-  background: #CFB96B;
-  font-size: 30px;
-  padding: 10px;
-  border-radius: 15px;
-  color:#FFFDFD;
+  font-size: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  color:white;
+  font-weight: 500;
+  padding-top: 75px;
+  font-family: 'Trebuchet MS', sans-serif;
+  -webkit-animation: pulse 1.5s infinite;
+  animation: pulse 1.5s infinite;
+  font-style: italic;
 }
-</style>
+
+button:hover {
+  -webkit-animation: none;
+  animation: none;
+}
+@-webkit-keyframes pulse {
+  0% { transform:scale(.9); }
+  70% { transform:scale(1);
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+    100% {
+    transform:scale(.9);
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
+}
+
+@keyframes pulse {
+  0% { transform:scale(.9); }
+  70% { transform:scale(1);
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+    100% {
+    transform:scale(.9);
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
+}
+
+  </style>

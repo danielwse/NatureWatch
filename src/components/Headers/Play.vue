@@ -26,6 +26,7 @@ export default {
     margin-right:0;
     margin-top:0;
     margin-bottom: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
