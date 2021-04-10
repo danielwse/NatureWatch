@@ -1,16 +1,20 @@
 <template>
     <div>
-        <PlayHeader></PlayHeader><br><br>
-        <span class="bigWhite">Welcome to </span>
-        <span class="lightGreen">Play to Plant!</span><br>
-        <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
-            required to plant a tree in the Amazon Rainforest!</span><br><br>
-        <span class="green">In collaboration with</span> nbsp
-        <img src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px"><br>
+        <PlayHeader></PlayHeader><br>
+        
+        <div>
+            <span class="bigWhite">Welcome to </span>
+            <span class="lightGreen">Play to Plant!</span><br>
+            <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
+                required to plant a tree in the Amazon Rainforest!</span><br>
+            <span class="green align">In collaboration with</span>nbsp
+            <img class="align" src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px">
+            <Floating></Floating>
+        </div>nbsp
+
         <span class="smallWhite">Click me to start planting trees!</span> nbsp
         <img src="../assets/plant.svg" style="width:400px" v-on:click="showModal">
         <Modal v-show="isModalVisible" v-on:close="closeModal"/>
-
 
     </div>
 </template>
@@ -19,54 +23,82 @@
 import Modal from './Modal.vue';
 import PlayHeader from './Headers/Play.vue';
 import firebase from "firebase";
-import database from "../firebase.js"
+import database from "../firebase.js";
+import Floating from './Floating.vue';
 
 export default {
     name: 'QuizCover',
     components: {
         Modal,
-        PlayHeader
+        PlayHeader,
+        Floating,
     },
     data() {
         return {
             isModalVisible: false,
             date:'',
             lastSignIn:'',
+            userName:'',
         }
     },
     methods:{
         showModal:function() {
+            var user = firebase.auth().currentUser;
             if (user!=null) {
                 console.log(firebase.auth().currentUser);
            
                 const today = new Date();
                 this.date = today.getDate();
-                const last = firebase.auth().currentUser.metadata.lastSignInTime;
+                var last = firebase.auth().currentUser.metadata.lastSignInTime;
                 this.lastSignin = last.substring(5,7);
     
-                var user = firebase.auth().currentUser;
                 if (this.date-this.lastSignin>0) {
                     database.collection("Users").doc(user.uid).update({
-                        chanceLeft:2
+                        chanceLeft:2,
+                        questionsList:["01","02","03","04","05","06","07","08","09","10",
+                                        "11","12","13","14","15","16","17","18","19","20",
+                                        "21","22","23","24","25","26","27","28","29","30"],
                     })
                 }
-                this.$router.push('/Questions');
+
+                if (this.date-this.lastSignin==1) {
+                    database.collection("Users").doc(user.uid).update({
+                      streak: firebase.firestore.FieldValue.increment(1)
+                    })
+                    database.collection("Users").doc(user.uid).get().then(doc=> {
+                      var ls = doc.data().longestStreak;
+                      var s = doc.data().streak;
+                      if (ls<s) {
+                        database.collection("Users").doc(user.uid).update({
+                          longestStreak: s
+                        })
+                      }
+                    })
+                }
+                
+                database.collection("Users").doc(user.uid).get().then(doc=> {
+                    if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
+                    else alert("Chance used up today.Come tomorrow!");
+                });
             }
             else this.isModalVisible = true;
         },
         closeModal() {
             this.isModalVisible = false;
         },
+    
     },
-    created:function() {
-        document.body.style.backgroundColor = "#343434"
-    }
+    created() {
+        document.body.style.backgroundColor = "#343434";
+    },
+  
 }
 </script>
 
 <style scoped>
     * {
-        font-family: "Mohave"
+        font-family: "Mohave";
+        line-height:1.5;
     }
     .bigWhite {
         color:#FFFFFF;

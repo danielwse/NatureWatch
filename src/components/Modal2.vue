@@ -17,11 +17,11 @@
       <section class="modal-body">
         <slot name="body">
           <div>Email </div>
-          <input type="email" placeholder="Key in email address" v-model="user.email"><br>
+          <input type="email" placeholder="Key in email address" v-model="email"><br>
           <div>Username </div>
           <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
-          <input type="password" placeholder="Key in email address" v-model="user.password"><br><br>
+          <input type="password" placeholder="Key in email address" v-model="password"><br><br>
           <button class="btn-green" v-on:click="register">Confirm</button>
         </slot>
        </section>
@@ -45,11 +45,18 @@ import firebase from "firebase"
     },
     data() {
       return {
+        email:'',
+        password:'',
         user: {
           name:'',
           trees:0,
           chanceLeft:2,
-          questionsList:["01","02","03","04","05","06","07","08","09","10"],
+          questionsList:["01","02","03","04","05","06","07","08","09","10",
+                        "11","12","13","14","15","16","17","18","19","20",
+                        "21","22","23","24","25","26","27","28","29","30"],
+          streak:0,
+          longestStreak:0,
+          lastSignInTime:'',
         },
       }
     },
@@ -61,11 +68,12 @@ import firebase from "firebase"
       register() {
         firebase
           .auth()
-          .createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .createUserWithEmailAndPassword(this.email, this.password)
           .then(() => {
             alert('Successfully registered! Please login.');
-            var uid=firebase.auth().currentUser.uid;
- 
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+
             console.log(this.user.questionsList);
             database.collection('Users').doc(uid).set(this.user);
             this.$emit('close');
