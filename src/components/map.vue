@@ -34,7 +34,6 @@ import { LMap, LTileLayer, LMarker, LIcon, LTooltip, LControl } from 'vue2-leafl
 import L from 'leaflet'
 import { Icon } from 'leaflet';
 import tree from '../assets/tree.png'
-
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -47,7 +46,6 @@ export default {
         countries: Array,
         hover: Array
     },
-
     data() {
         return {
             zoom:2,
@@ -122,7 +120,6 @@ export default {
 </script>
 
 <style scoped>
-
 .map{
     height:95vh;
 }
@@ -130,7 +127,6 @@ export default {
     background-color:red;
     color:white;
 }
-
 .green{
     background-color:green;
     color:white;
@@ -141,5 +137,4 @@ button{
     padding:2px;
     border-radius: 5px;
 }
-
 </style>

@@ -1,6 +1,7 @@
 <template>
 <div>
     <ForestHeader v-bind:forestName = 'name'></ForestHeader>
+    
     <div class="container">
         <div class = "row">
             <div class = "col-12">
@@ -39,7 +40,6 @@ import database from '../firebase.js'
 import CountryList from './CountryList.vue'
 export default {
     name:"Map",
-
     data() {
         return {
             name : this.$route.name,
@@ -68,19 +68,14 @@ export default {
             
             this.countries[index].iconSize = this.largeIcon
             //console.log(this.countries[index].name + " size: " + this.countries[index].iconSize)
-
         },
         mouseLeftCountry: function(index){
-
             this.countries[index].iconSize = this.normalIcon
             //console.log(this.countries[index].name + " size: " + this.countries[index].iconSize)
-
         },
         mouseClickCountry: function(index){
-
             var curr = this.countries[index]
             this.currentHover = [curr.latitude,curr.longitude]
-
         }
     },
     created(){
@@ -94,7 +89,5 @@ export default {
 .container{
     top:10vh;
     position:relative;
-    z-index: -1;
 }
-
 </style>
