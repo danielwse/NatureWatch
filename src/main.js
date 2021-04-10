@@ -4,8 +4,6 @@ import VueRouter from 'vue-router'
 import Routescomp from './routes.js'
 import 'leaflet/dist/leaflet.css'
 import SuiVue from 'semantic-ui-vue'
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 Vue.use(VueRouter)
