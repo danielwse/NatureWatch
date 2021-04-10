@@ -1,20 +1,20 @@
 <template>
-  <div class="modal-backdrop">
-    <div class="modal">
-      <header class="modal-header">
+  <div class="modal-backdrop2">
+    <div class="modal2">
+      <header class="modal-header2">
         <slot name="header">
             Sign up
         </slot>
         <button
           type="button"
-          class="btn-close"
+          class="btn-close2"
           v-on:click="close"
         >
           x
         </button>
       </header>
 
-      <section class="modal-body">
+      <section class="modal-body2">
         <slot name="body">
           <div>Email </div>
           <input type="email" placeholder="Key in email address" v-model="user.email"><br>
@@ -22,11 +22,11 @@
           <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
           <input type="password" placeholder="Key in email address" v-model="user.password"><br><br>
-          <button class="btn-green" v-on:click="register">Confirm</button>
+          <button class="btn-green2" v-on:click="register">Confirm</button>
         </slot>
        </section>
 
-      <footer class="modal-footer">
+      <footer class="modal-footer2">
         <slot name="footer">
           Welcome to NatureWatch!
         </slot>
@@ -79,7 +79,7 @@ import firebase from "firebase"
 </script>
 
 <style scoped>
-  .modal-backdrop {
+  .modal-backdrop2 {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -91,7 +91,7 @@ import firebase from "firebase"
     align-items: center;
   }
 
-  .modal {
+  .modal2 {
     background: #FFFFFF;
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
@@ -100,13 +100,13 @@ import firebase from "firebase"
     border-radius: 10px;
   }
 
-  .modal-header,
-  .modal-footer {
+  .modal-header2,
+  .modal-footer2 {
     padding: 15px;
     display: flex;
   }
 
-  .modal-header {
+  .modal-header2 {
     position: relative;
     border-bottom: 1px solid #eeeeee;
     color: #4AAE9B;
@@ -114,21 +114,21 @@ import firebase from "firebase"
     font-size:25px;
   }
 
-  .modal-footer {
+  .modal-footer2 {
     border-top: 1px solid #eeeeee;
     flex-direction: column;
     justify-content: flex-end;
 
   }
 
-  .modal-body {
+  .modal-body2 {
     position: relative;
     padding: 20px 10px;
     text-align: left;
     font-size: 20px;
   }
 
-  .btn-close {
+  .btn-close2 {
     position: absolute;
     top: 0;
     right: 0;
@@ -141,7 +141,7 @@ import firebase from "firebase"
     background: transparent;
   }
 
-  .btn-green {
+  .btn-green2 {
     color: white;
     background: #4AAE9B;
     border: 1px solid #4AAE9B;
