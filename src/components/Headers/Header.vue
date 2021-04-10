@@ -36,11 +36,9 @@
 </template>
 
 <script>
-
 </script>
 
 <style scoped>
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -74,7 +72,6 @@ l
 .dropdown:hover .dropbtn {
   color: white;
 }
-
 li.dropdown {
   display: inline-block;
 }
@@ -103,4 +100,4 @@ li.dropdown {
 li.router-linkactive {
   color: white;
 }
-</style>>
+</style>

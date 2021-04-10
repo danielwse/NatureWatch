@@ -1,7 +1,7 @@
 <template>
     <div class = "card country-list" style = "width:18rem">
         <ul class='list-group list-group-flush'>
-            <li 
+            <li id='list'
                 @mouseover="mouseOver(index)"
                 @mouseleave="mouseLeft(index)"
                 @mousedown="mouseClick(index)"
@@ -32,7 +32,7 @@
     }
 </script>
 <style scoped>
-li:hover{
+list:hover{
     background-color: darkgrey;
 }
 .country-list{
