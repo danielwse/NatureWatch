@@ -77,19 +77,12 @@ import database from "../firebase.js"
           .then(() => {
             alert('Successfully logged in');
             var user = firebase.auth().currentUser;
-            this.updateAttributes(this.lastSignIn).then(()=> {
+            this.updateAttributes(this.lastSignIn).then((value)=> {
               database.collection("Users").doc(user.uid).update({
                 lastSignInTime: user.metadata.lastSignInTime,
               })
-            }).then(()=> {
-              database.collection("Users").doc(user.uid).get().then(doc=> {
-                if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
-                else {
-                  this.close();
-                  alert("Chance used up today.Come tomorrow!");
-                }
-              });
-            })
+              console.log(value);
+            }).then(this.close());
           })
           .catch(error => {
             alert(error.message);
@@ -121,7 +114,7 @@ import database from "../firebase.js"
                       questionsList:["01","02","03","04","05","06","07","08","09","10",
                                       "11","12","13","14","15","16","17","18","19","20",
                                       "21","22","23","24","25","26","27","28","29","30"],
-                    })
+                    }).then(console.log("updated chanceLeft"))
                 }
                 if (date-lastSignIn==1) {
                     database.collection("Users").doc(user.uid).update({
@@ -144,7 +137,7 @@ import database from "../firebase.js"
               }
             })
   
-          resolve();
+          resolve("Completed!");
         })
       }
     },
