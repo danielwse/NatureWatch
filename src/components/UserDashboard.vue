@@ -142,7 +142,6 @@ export default {
 
 .firstGrid {
   display: flex;
-  border: 1px solid blue;
   justify-content: center;
   align-items: center;
   background: lightgreen;
@@ -152,18 +151,15 @@ export default {
 .streak img {
   height: 50px;
   width: 50px;
-  border: 1px solid white;
 }
 
 .streak {
-  border: 1px solid white;
   display: flex;
   justify-content: center;
 }
 #streakNum {
   font-size: 50px;
   color: green;
-  border: 1px solid white;
 }
 
 .chart {
@@ -207,20 +203,19 @@ export default {
 .card1 img {
   height: 100px;
   width: 80px;
-  border: 1px solid white;
+ 
 }
 
 .card2 img {
   height: 100px;
   width: 80px;
-  border: 1px solid white;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
+  margin:10px;
 }
 
 #treeNum {

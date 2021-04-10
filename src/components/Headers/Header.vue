@@ -7,9 +7,6 @@
     <ul>
       <li><router-link to="/" exact>Home</router-link></li>
       <li><router-link to="/playtoplant" exact>Play to Plant!</router-link></li>
-      <li>
-        <router-link to="/userdashboard" exact>User Dashboard</router-link>
-      </li>
       <li class="dropdown">
         <a :href="$router.resolve({ name: 'Forests' }).href">Forests</a>
 

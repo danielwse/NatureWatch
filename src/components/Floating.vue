@@ -48,8 +48,8 @@ export default {
         logout:function() {
             firebase.auth().signOut().then(() => {
              alert('Safely signed out!');
-             location.reload();
              this.$router.push("/playtoplant");
+             location.reload();
            }).catch(error => {
              alert('Sign Out Error', error);
            });

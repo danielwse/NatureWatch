@@ -17,11 +17,11 @@
       <section class="modal-body">
         <slot name="body">
           <div>Email </div>
-          <input type="email" placeholder="Key in email address" v-model="user.email"><br>
+          <input type="email" placeholder="Key in email address" v-model="email"><br>
           <div>Username </div>
           <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
-          <input type="password" placeholder="Key in email address" v-model="user.password"><br><br>
+          <input type="password" placeholder="Key in email address" v-model="password"><br><br>
           <button class="btn-green" v-on:click="register">Confirm</button>
         </slot>
        </section>
@@ -45,6 +45,8 @@ import firebase from "firebase"
     },
     data() {
       return {
+        email:'',
+        password:'',
         user: {
           name:'',
           trees:0,
@@ -66,7 +68,7 @@ import firebase from "firebase"
       register() {
         firebase
           .auth()
-          .createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .createUserWithEmailAndPassword(this.email, this.password)
           .then(() => {
             alert('Successfully registered! Please login.');
             var user = firebase.auth().currentUser;

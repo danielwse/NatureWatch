@@ -87,20 +87,7 @@ export default {
             database.collection('Users').doc(uid).update({
                 questionsList: this.questionsList,
             });
-            /* 
-            database.collection('Questions').get().then(snapshot => {
-                snapshot.forEach(doc => {
-                    this.questions.push(doc.data());
-                    database.collection('Answers').doc(doc.id).get().then(doc => {
-                        if (doc.exists) {
-                            this.correctAnswer.push(doc.get('answer'));
-                            console.log(doc.get('answer'));
-                        } else {
-                            console.log("No such document")
-                        }
-                    })
-                })
-            })*/
+     
         },
         matchAnswer:function(key) {
             var cor = this.correctAnswer[this.index];
