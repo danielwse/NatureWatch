@@ -4,12 +4,12 @@
         <div v-bind:style="{color:'#FFFFFF', fontSize:'64px'}">Question {{index+1}} </div><br>
         <div v-bind:style="{color:'#45A025', fontSize:'36px'}">
             {{questions[index].cont}}
-        </div><br>
+        </div><br><br>
         <div class="bigWhite">
         <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index].a}}</div>
         <div id="b" v-on:click="matchAnswer('b')">b.{{questions[index].b}}</div>
         <div id="c" v-on:click="matchAnswer('c')">c.{{questions[index].c}}</div>
-        <div id="d" v-on:click="matchAnswer('d')">d.{{questions[index].d}}</div>
+        <div id="d" v-on:click="matchAnswer('d')">d.{{questions[index].d}}</div>    
         </div><br>
         <button v-show="next" v-bind:style="{fontSize:'24px'}" v-on:click="updateQuestion()">Next</button>
 
@@ -54,10 +54,6 @@ export default {
         async fetchQuestions() {
             var uid = firebase.auth().currentUser.uid;
             console.log(uid);
-            database.collection('Users').doc(uid).update({
-                chanceLeft: firebase.firestore.FieldValue.increment(-1)
-            });
-            console.log("updated");
             
             this.questionsList = await database.collection('Users').doc(uid).get().then(doc => 
                doc.data().questionsList);
@@ -87,7 +83,20 @@ export default {
             database.collection('Users').doc(uid).update({
                 questionsList: this.questionsList,
             });
-     
+            /* 
+            database.collection('Questions').get().then(snapshot => {
+                snapshot.forEach(doc => {
+                    this.questions.push(doc.data());
+                    database.collection('Answers').doc(doc.id).get().then(doc => {
+                        if (doc.exists) {
+                            this.correctAnswer.push(doc.get('answer'));
+                            console.log(doc.get('answer'));
+                        } else {
+                            console.log("No such document")
+                        }
+                    })
+                })
+            })*/
         },
         matchAnswer:function(key) {
             var cor = this.correctAnswer[this.index];
@@ -113,7 +122,10 @@ export default {
                 this.next=false;
             } else {
                 var uid=firebase.auth().currentUser.uid;
-            
+                database.collection('Users').doc(uid).update({
+                    chanceLeft: firebase.firestore.FieldValue.increment(-1)
+                });
+
                 if (this.counter==5) {
                     database.collection('Users').doc(uid).update({
                         trees: firebase.firestore.FieldValue.increment(1)
@@ -134,8 +146,7 @@ export default {
 
 <style scoped>
  * {
-        font-family: "Mohave";
-        line-height:1.5;
+        font-family: "Mohave"
     }
  .bigWhite {
         color:#FFFFFF;
