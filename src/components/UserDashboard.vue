@@ -6,28 +6,28 @@
         <div class="leftStreak">
           <div class="streak">
             <img src="../assets/flame.svg" />
-            <span id="streakNum"><b>3</b></span>
+            <span id="streakNum"><b>{{user.streak}}</b></span>
           </div>
-          <h3><b>Logins This Week </b></h3>
+          <h3><b>Streak </b></h3>
         </div>
         <div class="rightStreak">
           <div class="streak">
             <img src="../assets/flame.svg" />
-            <span id="streakNum"><b>10</b></span>
+            <span id="streakNum"><b>{{user.longestStreak}}</b></span>
           </div>
           <h3><b> Longest Streak </b></h3>
         </div>
       </div>
       <div class="card1">
         <div class="container">
-          <span id="treeNum"><b>10</b></span>
+          <span id="treeNum"><b>{{user.trees}}</b></span>
           <img src="../assets/tree.svg" />
         </div>
         <h3><b>Planted By You</b></h3>
       </div>
       <div class="card2">
         <div class="container">
-          <span id="treeNum"><b>2000</b></span>
+          <span id="treeNum"><b>{{totalTrees}}</b></span>
           <img src="../assets/tree.svg" />
         </div>
         <h3><b>Planted By NatureWatch</b></h3>
@@ -36,10 +36,10 @@
         <div class="progressBarAndText">
           <RadialProgressBar
             :diameter="200"
-            :completed-steps="completedSteps"
+            :completed-steps="totalSteps-user.chanceLeft"
             :total-steps="totalSteps"
           >
-            <h3><b> 2/5 Quiz Attempts Today</b></h3>
+            <h3><b> {{totalSteps-user.chanceLeft}}/{{totalSteps}} Quiz Attempts Today</b></h3>
           </RadialProgressBar>
         </div>
       </div>
@@ -52,25 +52,9 @@
           </div>
           <div class="body">
             <ol>
-              <li>
-                <mark>Jerry Wood</mark>
-                <small>948</small>
-              </li>
-              <li>
-                <mark>Brandon Barnes</mark>
-                <small>750</small>
-              </li>
-              <li>
-                <mark>Raymond Knight</mark>
-                <small>684</small>
-              </li>
-              <li>
-                <mark>Trevor McCormick</mark>
-                <small>335</small>
-              </li>
-              <li>
-                <mark>Andrew Fox</mark>
-                <small>296</small>
+              <li v-for="person in nameList" :key="person.id">
+                <mark>{{person.name}}</mark>
+                <small>{{person.trees}}</small>
               </li>
             </ol>
           </div>
@@ -80,30 +64,14 @@
         <div class="leaderboard">
           <div class="head">
             <i class="fas fa-crown"></i>
-            <h1>Most Trees Planted</h1>
-            <h4>This Week</h4>
+            <h1>Longest Streak</h1>
+            <h4>All-Time</h4>
           </div>
           <div class="body">
             <ol>
-              <li>
-                <mark>Jerry Wood</mark>
-                <small>948</small>
-              </li>
-              <li>
-                <mark>Brandon Barnes</mark>
-                <small>750</small>
-              </li>
-              <li>
-                <mark>Raymond Knight</mark>
-                <small>684</small>
-              </li>
-              <li>
-                <mark>Trevor McCormick</mark>
-                <small>335</small>
-              </li>
-              <li>
-                <mark>Andrew Fox</mark>
-                <small>296</small>
+              <li v-for="person in streakList" :key="person.id">
+                <mark>{{person.name}}</mark>
+                <small>{{person.streak}}</small>
               </li>
             </ol>
           </div>
@@ -117,7 +85,8 @@
 <script>
 import Forest from "./Headers/Forest.vue";
 import RadialProgressBar from "vue-radial-progress";
-
+import firebase from "firebase";
+import database from "../firebase.js"
 export default {
   components: {
     Forest,
@@ -125,10 +94,40 @@ export default {
   },
   data() {
     return {
-      completedSteps: 2,
-      totalSteps: 5,
+      user:{},
+      nameList:[],
+      streakList:[],
+      totalSteps: 2,
+      totalTrees: '',
     };
   },
+  methods: {
+    fetchData:function() {
+        var uid = firebase.auth().currentUser.uid;
+        if (uid!=null) {
+            console.log(uid);
+            database.collection('Users').doc(uid).get().then(doc => this.user= doc.data());
+        }
+        database.collection('Users').orderBy('trees','desc').limit(5).orderBy('name').get().then(snapshot=> {
+          var totalTrees=0;
+          snapshot.docs.forEach(doc => {
+            var data=doc.data();
+            totalTrees += data.trees;
+            this.nameList.push({id:doc.id,name:data.name,trees:data.trees});
+          })
+          this.totalTrees=totalTrees;
+        })
+        database.collection('Users').orderBy('longestStreak','desc').limit(5).orderBy('name').get().then(snapshot=> {
+          snapshot.docs.forEach(doc => {
+            var data=doc.data();
+            this.streakList.push({id:doc.id,name:data.name,streak:data.longestStreak});
+          })
+        })
+    }
+  },
+  created() {
+    this.fetchData();
+  }
 };
 </script>
 
@@ -137,65 +136,51 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
-
 .firstGrid {
   display: flex;
-  border: 1px solid blue;
   justify-content: center;
   align-items: center;
   background: lightgreen;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
 .streak img {
   height: 50px;
   width: 50px;
-  border: 1px solid white;
 }
-
 .streak {
-  border: 1px solid white;
   display: flex;
   justify-content: center;
 }
 #streakNum {
   font-size: 50px;
   color: green;
-  border: 1px solid white;
 }
-
 .chart {
   border: 1px solid white;
   display: flex;
   justify-content: center;
   background: #C0EFF6;
 }
-
 .progressBarAndText {
   display: inline-block;
 }
-
 .chart span {
   color: black;
 }
-
 .leftStreak,
 .rightStreak {
   margin: 10px;
 }
-
 .leftStreak,
 .rightStreak h3 {
   color: black;
 }
-
 .card1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   background: lightgrey;
   display: inline-block;
 }
-
 .card2 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -205,45 +190,35 @@ export default {
 .card1 img {
   height: 100px;
   width: 80px;
-  border: 1px solid white;
+ 
 }
-
 .card2 img {
   height: 100px;
   width: 80px;
-  border: 1px solid white;
 }
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
+  margin:10px;
 }
-
 #treeNum {
   color: green;
   font-size: 60px;
 }
-
 .leaderContainer {
 	grid-column-start: 1;
   grid-column-end: 3;
 }
-
 .leaderContainerWeek {
   grid-column-start: 3;
   grid-column-end: 5;
-
 }
-
-
 /* leaderboard */
 .leaderboard {
 	background: linear-gradient(to bottom, #3a404d, #181c26);
   height: 100%;
 }
-
 /* head */
 .leaderboard .head {
 	color: snow;
@@ -251,11 +226,9 @@ export default {
 	text-align: center;
   border: 1px solid white;
 }
-
 .leaderboard h4 {
   color: green;
 }
-
 /* body */
 .leaderboard .body {
 	color: snow;

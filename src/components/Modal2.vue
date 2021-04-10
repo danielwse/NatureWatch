@@ -1,32 +1,32 @@
 <template>
-  <div class="modal-backdrop2">
-    <div class="modal2">
-      <header class="modal-header2">
+  <div class="modal-backdrop">
+    <div class="modal">
+      <header class="modal-header">
         <slot name="header">
             Sign up
         </slot>
         <button
           type="button"
-          class="btn-close2"
+          class="btn-close"
           v-on:click="close"
         >
           x
         </button>
       </header>
 
-      <section class="modal-body2">
+      <section class="modal-body">
         <slot name="body">
           <div>Email </div>
-          <input type="email" placeholder="Key in email address" v-model="user.email"><br>
+          <input type="email" placeholder="Key in email address" v-model="email"><br>
           <div>Username </div>
           <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
-          <input type="password" placeholder="Key in email address" v-model="user.password"><br><br>
-          <button class="btn-green2" v-on:click="register">Confirm</button>
+          <input type="password" placeholder="Key in email address" v-model="password"><br><br>
+          <button class="btn-green" v-on:click="register">Confirm</button>
         </slot>
        </section>
 
-      <footer class="modal-footer2">
+      <footer class="modal-footer">
         <slot name="footer">
           Welcome to NatureWatch!
         </slot>
@@ -38,18 +38,24 @@
 <script>
 import database from "../firebase.js"
 import firebase from "firebase"
-
   export default {
     name: 'Modal2',
     components: {
     },
     data() {
       return {
+        email:'',
+        password:'',
         user: {
           name:'',
           trees:0,
           chanceLeft:2,
-          questionsList:["01","02","03","04","05","06","07","08","09","10"],
+          questionsList:["01","02","03","04","05","06","07","08","09","10",
+                        "11","12","13","14","15","16","17","18","19","20",
+                        "21","22","23","24","25","26","27","28","29","30"],
+          streak:0,
+          longestStreak:0,
+          lastSignInTime:'',
         },
       }
     },
@@ -57,15 +63,14 @@ import firebase from "firebase"
       close() {
         this.$emit('close');
       },
-
       register() {
         firebase
           .auth()
-          .createUserWithEmailAndPassword(this.user.email, this.user.password)
+          .createUserWithEmailAndPassword(this.email, this.password)
           .then(() => {
             alert('Successfully registered! Please login.');
-            var uid=firebase.auth().currentUser.uid;
- 
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
             console.log(this.user.questionsList);
             database.collection('Users').doc(uid).set(this.user);
             this.$emit('close');
@@ -79,7 +84,7 @@ import firebase from "firebase"
 </script>
 
 <style scoped>
-  .modal-backdrop2 {
+  .modal-backdrop {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -90,8 +95,7 @@ import firebase from "firebase"
     justify-content: center;
     align-items: center;
   }
-
-  .modal2 {
+  .modal {
     background: #FFFFFF;
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
@@ -99,36 +103,30 @@ import firebase from "firebase"
     flex-direction: column;
     border-radius: 10px;
   }
-
-  .modal-header2,
-  .modal-footer2 {
+  .modal-header,
+  .modal-footer {
     padding: 15px;
     display: flex;
   }
-
-  .modal-header2 {
+  .modal-header {
     position: relative;
     border-bottom: 1px solid #eeeeee;
     color: #4AAE9B;
     justify-content: space-between;
     font-size:25px;
   }
-
-  .modal-footer2 {
+  .modal-footer {
     border-top: 1px solid #eeeeee;
     flex-direction: column;
     justify-content: flex-end;
-
   }
-
-  .modal-body2 {
+  .modal-body {
     position: relative;
     padding: 20px 10px;
     text-align: left;
     font-size: 20px;
   }
-
-  .btn-close2 {
+  .btn-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -140,8 +138,7 @@ import firebase from "firebase"
     color: #4AAE9B;
     background: transparent;
   }
-
-  .btn-green2 {
+  .btn-green {
     color: white;
     background: #4AAE9B;
     border: 1px solid #4AAE9B;
@@ -149,4 +146,3 @@ import firebase from "firebase"
     font-size:15px;
   }
 </style>
-
