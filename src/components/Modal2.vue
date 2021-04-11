@@ -1,7 +1,7 @@
 <template>
-  <div class="modal-backdrop">
-    <div class="modal">
-      <header class="modal-header">
+  <div class="modal2-backdrop">
+    <div class="modal2">
+      <header class="modal2-header">
         <slot name="header">
             Sign up
         </slot>
@@ -14,7 +14,7 @@
         </button>
       </header>
 
-      <section class="modal-body">
+      <section class="modal2-body">
         <slot name="body">
           <div>Email </div>
           <input type="email" placeholder="Key in email address" v-model="email"><br>
@@ -26,7 +26,7 @@
         </slot>
        </section>
 
-      <footer class="modal-footer">
+      <footer class="modal2-footer">
         <slot name="footer">
           Welcome to NatureWatch!
         </slot>
@@ -39,7 +39,7 @@
 import database from "../firebase.js"
 import firebase from "firebase"
   export default {
-    name: 'Modal2',
+    name: 'modal22',
     components: {
     },
     data() {
@@ -84,7 +84,7 @@ import firebase from "firebase"
 </script>
 
 <style scoped>
-  .modal-backdrop {
+  .modal2-backdrop {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -95,7 +95,7 @@ import firebase from "firebase"
     justify-content: center;
     align-items: center;
   }
-  .modal {
+  .modal2 {
     background: #FFFFFF;
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
@@ -103,24 +103,24 @@ import firebase from "firebase"
     flex-direction: column;
     border-radius: 10px;
   }
-  .modal-header,
-  .modal-footer {
+  .modal2-header,
+  .modal2-footer {
     padding: 15px;
     display: flex;
   }
-  .modal-header {
+  .modal2-header {
     position: relative;
     border-bottom: 1px solid #eeeeee;
     color: #4AAE9B;
     justify-content: space-between;
     font-size:25px;
   }
-  .modal-footer {
+  .modal2-footer {
     border-top: 1px solid #eeeeee;
     flex-direction: column;
     justify-content: flex-end;
   }
-  .modal-body {
+  .modal2-body {
     position: relative;
     padding: 20px 10px;
     text-align: left;

@@ -87,6 +87,7 @@ import Forest from "./Headers/Forest.vue";
 import RadialProgressBar from "vue-radial-progress";
 import firebase from "firebase";
 import database from "../firebase.js"
+
 export default {
   components: {
     Forest,
@@ -108,7 +109,8 @@ export default {
             console.log(uid);
             database.collection('Users').doc(uid).get().then(doc => this.user= doc.data());
         }
-        database.collection('Users').orderBy('trees','desc').limit(5).orderBy('name').get().then(snapshot=> {
+
+        database.collection('Users').orderBy('trees','desc').limit(10).orderBy('name').get().then(snapshot=> {
           var totalTrees=0;
           snapshot.docs.forEach(doc => {
             var data=doc.data();
@@ -117,7 +119,8 @@ export default {
           })
           this.totalTrees=totalTrees;
         })
-        database.collection('Users').orderBy('longestStreak','desc').limit(5).orderBy('name').get().then(snapshot=> {
+
+        database.collection('Users').orderBy('longestStreak','desc').limit(10).orderBy('name').get().then(snapshot=> {
           snapshot.docs.forEach(doc => {
             var data=doc.data();
             this.streakList.push({id:doc.id,name:data.name,streak:data.longestStreak});
@@ -136,6 +139,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+
 .firstGrid {
   display: flex;
   justify-content: center;
@@ -143,10 +147,12 @@ export default {
   background: lightgreen;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .streak img {
   height: 50px;
   width: 50px;
 }
+
 .streak {
   display: flex;
   justify-content: center;
@@ -155,32 +161,39 @@ export default {
   font-size: 50px;
   color: green;
 }
+
 .chart {
   border: 1px solid white;
   display: flex;
   justify-content: center;
   background: #C0EFF6;
 }
+
 .progressBarAndText {
   display: inline-block;
 }
+
 .chart span {
   color: black;
 }
+
 .leftStreak,
 .rightStreak {
   margin: 10px;
 }
+
 .leftStreak,
 .rightStreak h3 {
   color: black;
 }
+
 .card1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   background: lightgrey;
   display: inline-block;
 }
+
 .card2 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -192,43 +205,55 @@ export default {
   width: 80px;
  
 }
+
 .card2 img {
   height: 100px;
   width: 80px;
 }
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin:10px;
 }
+
 #treeNum {
   color: green;
   font-size: 60px;
 }
+
 .leaderContainer {
 	grid-column-start: 1;
   grid-column-end: 3;
 }
+
 .leaderContainerWeek {
   grid-column-start: 3;
   grid-column-end: 5;
+
 }
+
+
 /* leaderboard */
 .leaderboard {
 	background: linear-gradient(to bottom, #3a404d, #181c26);
   height: 100%;
 }
+
 /* head */
 .leaderboard .head {
 	color: snow;
 	font-size: 14px;
 	text-align: center;
   border: 1px solid white;
+  padding:18px;
 }
+
 .leaderboard h4 {
   color: green;
 }
+
 /* body */
 .leaderboard .body {
 	color: snow;
@@ -272,5 +297,20 @@ export default {
 }
 .leaderboard li:nth-child(5) {
 	background: #c24448;
+}
+.leaderboard li:nth-child(6) {
+	background: #ab373a;
+}
+.leaderboard li:nth-child(7) {
+	background: #ab373a;
+}
+.leaderboard li:nth-child(8) {
+	background: #ab373a;
+}
+.leaderboard li:nth-child(9) {
+	background: #ab373a;
+}
+.leaderboard li:nth-child(10) {
+	background: #ab373a;
 }
 </style>

@@ -15,6 +15,8 @@
             </footer>
         </div>
 
+        <div class="align2" v-if="!userName">Please login first!</div>
+
     </div>
 </template>
 
@@ -67,11 +69,21 @@ export default {
     bottom:240px;
     float: right;
 }
+.align2 {
+    color:white;
+    font-size:25px;
+    position: relative;
+    bottom:200px;
+    right:100px;
+    float: right;
+}
  .modal-header,
   .modal-footer {
     padding: 15px;
     display: flex;
     color: white;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
 }
   .modal-header {
     position: relative;
@@ -82,8 +94,6 @@ export default {
 }
   .modal-footer {
     font-size:18px;
-    border-top: 1px solid green;
-    border-bottom: 1px solid green;
     justify-content: space-evenly;
     background: rgb(114 170 74);
     border-radius: 100px 0px 100px 0px;
