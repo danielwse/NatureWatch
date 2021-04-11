@@ -16,11 +16,12 @@
 
       <section class="modal-body1">
         <slot name="body">
-          <div>Email </div>
+          <div style="text-align:left;">Email </div>
           <input type="email" placeholder="Key in email address" v-model="user.email"><br>
-          <div>Password </div>
+          <div style="text-align:left;">Password </div>
           <input type="password" placeholder="Key in password" v-model="user.password"><br><br>
           <button v-on:click="login" class="btn-green1">Confirm</button>
+          <div class="fgtpw" v-on:click="reset">Forgot password?</div>
         </slot>
        </section>
 
@@ -28,21 +29,23 @@
         <slot name="footer1">
           Don't have an account yet?
         </slot>
-        <button type="button" class="btn-green1" v-on:click="showModal">
+        <div class="btn-green2" v-on:click="showModal">
           Sign up now!
-        </button>
+        </div>
       </footer>
     </div>
     <Modal2 v-show="isModalVisible" v-on:close="closeModal"/>
   </div>
 </template>
 
+
 <script>
 import Modal2 from "./Modal2.vue"
 import firebase from "firebase"
+import database from "../firebase.js"
 
   export default {
-    name: 'Modal',
+    name: 'Modal1',
     components: {
       Modal2,
     },
@@ -51,8 +54,11 @@ import firebase from "firebase"
         user: {
           email:'',
           password:'',
+          id:'',
         },
         isModalVisible: false,
+        date:'',
+        lastSignIn:'',
       }
     },
     methods: {
@@ -66,17 +72,85 @@ import firebase from "firebase"
         this.isModalVisible = false;
       },
       login() {
+
         firebase
           .auth()
           .signInWithEmailAndPassword(this.user.email, this.user.password)
           .then(() => {
             alert('Successfully logged in');
-            this.$router.push('/Questions');
+            var user = firebase.auth().currentUser;
+            this.updateAttributes(this.lastSignIn).then((value)=> {
+              database.collection("Users").doc(user.uid).update({
+                lastSignInTime: user.metadata.lastSignInTime,
+              })
+              console.log(value);
+            }).then(this.close());
           })
           .catch(error => {
             alert(error.message);
           });
+          
       },
+      reset() {
+        firebase.auth().sendPasswordResetEmail(this.user.email)
+        .then(()=> {
+          alert('Check your email!')
+        })
+        .catch((error)=> {
+          alert(error.message)
+        })
+      },
+      updateAttributes:function(lastSignIn) {
+        return new Promise(function(resolve) {
+          const today = new Date();
+          var date = today.getDate();
+          var user = firebase.auth().currentUser;
+          database.collection("Users").doc(user.uid).get().then(doc=> {
+            if (doc.data().lastSignInTime!="") {
+              console.log("last signin time from doc: ",doc.data().lastSignInTime);
+              lastSignIn=doc.data().lastSignInTime.substring(5,7)
+              console.log("Okie we got: ",lastSignIn);
+              }
+            }
+          ).then(()=> {
+              console.log(user.uid," ",lastSignIn);
+              console.log(lastSignIn.length);
+      
+              if (lastSignIn.length!=0) {
+                console.log("Not first time log in");
+            
+                if (date-lastSignIn>0) {
+                    database.collection("Users").doc(user.uid).update({
+                      chanceLeft:2,
+                      questionsList:["01","02","03","04","05","06","07","08","09","10",
+                                      "11","12","13","14","15","16","17","18","19","20",
+                                      "21","22","23","24","25","26","27","28","29","30"],
+                    }).then(console.log("updated chanceLeft"))
+                }
+                if (date-lastSignIn==1) {
+                    database.collection("Users").doc(user.uid).update({
+                      streak: firebase.firestore.FieldValue.increment(1)
+                    })
+                    database.collection("Users").doc(user.uid).get().then(doc=> {
+                      var ls = doc.data().longestStreak;
+                      var s = doc.data().streak;
+                      if (ls<s) {
+                        database.collection("Users").doc(user.uid).update({
+                          longestStreak: s
+                        })
+                      }
+                    })
+                } else {
+                  database.collection("Users").doc(user.uid).update({
+                    streak:0
+                  })
+                }
+              }
+            })
+  
+          resolve("Completed!");
+        })
+      }
     },
   };
 </script>
@@ -103,10 +177,16 @@ import firebase from "firebase"
     border-radius: 10px;
   }
 
+
   .modal-header1,
   .modal-footer1 {
     padding: 15px;
     display: flex;
+  }
+
+  .fgtpw {
+    font-size:14px;
+    text-align: center;
   }
 
   .modal-header1 {
@@ -117,7 +197,7 @@ import firebase from "firebase"
     font-size:25px;
   }
 
-  .modal-footer1 {
+ .modal-footer1 {
     border-top: 1px solid #eeeeee;
     flex-direction: column;
     justify-content: flex-end;
@@ -127,7 +207,6 @@ import firebase from "firebase"
   .modal-body1 {
     position: relative;
     padding: 20px 10px;
-    text-align: left;
     font-size: 20px;
   }
 
@@ -144,12 +223,12 @@ import firebase from "firebase"
     background: transparent;
   }
 
-  .btn-green1 {
+  .btn-green1,.btn-green2 {
     color: white;
     background: #4AAE9B;
     border: 1px solid #4AAE9B;
     border-radius: 10px;
     font-size:15px;
+    
   }
 </style>
-
