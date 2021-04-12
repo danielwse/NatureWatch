@@ -1,34 +1,34 @@
 <template>
 <div>
     <ForestHeader v-bind:forestName = 'name'></ForestHeader>
-    
-    <div class="container">
-        <div class = "row">
-            <div class = "col-12">
-                <h1 class="text-center text-info">Deforestation by Countries</h1>
-                <br>
-            </div>
+    <div id="background">
+        <div class="container">
+            <div class = "row">
+                <div class = "col-12">
+                    <h1 class="text-center">Deforestation by Countries</h1>
+                    <br>
+                </div>
 
-            <div class = "col-8">
-                <leafMap 
-                    ref="maps"
-                    :countries="countries" :hover="currentHover">
-                </leafMap>
-            </div>
+                <div class = "col-8">
+                    <leafMap 
+                        ref="maps"
+                        :countries="countries" :hover="currentHover">
+                    </leafMap>
+                </div>
 
-            <div class = "col-4 d-flex justify-content-center">
-                
-                <CountryList 
-                    @mouse-over-country="mouseOverCountry"
-                    @mouse-left-country="mouseLeftCountry"
-                    @mouse-click-country="mouseClickCountry"
-                    :countries="countries">
-                </CountryList>
-                
+                <div class = "col-4 d-flex justify-content-center">
+                    
+                    <CountryList 
+                        @mouse-over-country="mouseOverCountry"
+                        @mouse-left-country="mouseLeftCountry"
+                        @mouse-click-country="mouseClickCountry"
+                        :countries="countries">
+                    </CountryList>
+                    
+                </div>
             </div>
         </div>
     </div>
-    
 
 </div>
 </template>
@@ -89,5 +89,23 @@ export default {
 .container{
     top:10vh;
     position:relative;
+    
 }
+
+#background{
+
+    background-image: url("../assets/night-sky-1.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    height: 500px;
+    
+
+}
+
+.text-center{
+    color:white
+}
+
+
 </style>
