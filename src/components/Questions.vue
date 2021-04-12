@@ -98,8 +98,10 @@ export default {
         },
         updateQuestion:function() {
             if (this.index<4) {
-                document.getElementById(this.selectedAnswer).style.color = "white";
-                document.getElementById(this.correctAnswer[this.index]).style.color = "white";
+                document.getElementById("a").style.color = "white";
+                document.getElementById("b").style.color = "white";
+                document.getElementById("c").style.color = "white";
+                document.getElementById("d").style.color = "white";
                 this.index++;
                 this.selectedAnswer= "";
                 this.next=false;
