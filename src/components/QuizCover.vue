@@ -7,13 +7,15 @@
             <span class="lightGreen">Play to Plant!</span><br>
             <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
                 required to plant a tree in the Amazon Rainforest!</span><br>
-            <span class="green align">In collaboration with</span>nbsp
+            <span class="green align">In collaboration with  </span>
             <img class="align" src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px">
             <Floating></Floating>
-        </div>nbsp
+        </div>
 
-        <span class="smallWhite">Click me to start planting trees!</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px" v-on:click="showModal">
+        <div class="imagefield">
+            <span class="smallWhite">Click me to start planting trees! </span>
+            <img src="../assets/plant.svg" style="width:400px" v-on:click="showModal">
+        </div>
         <Modal v-show="isModalVisible" v-on:close="closeModal"/>
 
     </div>
@@ -115,5 +117,9 @@ export default {
     .green{
         color: #A2EA89;
         font-size:24px;
+    }
+    .imagefield {
+        position: fixed;
+        left:30%;
     }
 </style>

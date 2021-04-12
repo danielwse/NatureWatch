@@ -97,7 +97,8 @@ import database from "../firebase.js"
           alert('Check your email!')
         })
         .catch((error)=> {
-          alert(error.message)
+          if (this.user.email.length==0) alert ("Please enter your email first!");
+          else alert(error.message)
         })
       },
       updateAttributes:function(lastSignIn) {

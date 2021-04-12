@@ -15,7 +15,7 @@
             </footer>
         </div>
 
-        <div class="align2" v-if="!userName">Please login first!</div>
+        <div class="align2" v-if="!userName">Please click the seedling to login first!</div>
 
     </div>
 </template>
@@ -74,7 +74,7 @@ export default {
     font-size:25px;
     position: relative;
     bottom:200px;
-    right:100px;
+    right:50px;
     float: right;
 }
  .modal-header,
