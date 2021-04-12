@@ -21,7 +21,7 @@
           <div>Username </div>
           <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
-          <input type="password" placeholder="Key in email address" v-model="password"><br><br>
+          <input type="password" placeholder="Key in password" v-model="password"><br><br>
           <button class="btn-green" v-on:click="register">Confirm</button>
         </slot>
        </section>
