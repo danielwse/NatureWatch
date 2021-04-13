@@ -87,7 +87,14 @@ import database from "../firebase.js"
             }).then(this.close());
           })
           .catch(error => {
-            alert(error.message);
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (this.user.email.length==0) alert("Please enter your email!");
+            else if (this.user.password.length==0) alert("Please enter your password!");
+            else if (errorCode=='auth/invalid-email') alert("Invalid email!");
+            else if (errorCode=='auth/wrong-password') alert("Wrong password!");
+            else if (errorCode=='auth/user-not-found') alert("Unregistered email!");
+            else alert(errorMessage);
           });
           
       },
@@ -97,7 +104,12 @@ import database from "../firebase.js"
           alert('Check your email!')
         })
         .catch((error)=> {
-          alert(error.message)
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (this.user.email.length==0) alert("Please enter your email first!");
+          else if (errorCode=='auth/invalid-email') alert("Invalid email!");
+          else if (errorCode=='auth/user-not-found') alert("Unregistered email!");
+          else alert(errorMessage);
         })
       },
       updateAttributes:function(lastSignIn) {

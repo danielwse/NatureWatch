@@ -21,7 +21,7 @@
           <div>Username </div>
           <input placeholder="Key in username" v-model="user.name"><br>
           <div>Password </div>
-          <input type="password" placeholder="Key in email address" v-model="password"><br><br>
+          <input type="password" placeholder="Key in password" v-model="password"><br><br>
           <button class="btn-green" v-on:click="register">Confirm</button>
         </slot>
        </section>
@@ -73,10 +73,18 @@ import firebase from "firebase"
             var uid = user.uid;
             console.log(this.user.questionsList);
             database.collection('Users').doc(uid).set(this.user);
+            firebase.auth().signOut();
             this.$emit('close');
           })
           .catch(error => {
-            alert(error.message);
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (this.email.length==0) alert("Please enter your email!");
+            else if (this.user.name.length==0) alert("Please enter your username!");
+            else if (this.password.length==0) alert("Please enter your password!");
+            else if (errorCode=='auth/invalid-email') alert("Invalid email!");
+            else if (errorCode=='auth/email-already-in-use') alert("The email has already been registered!");
+            else alert(errorMessage);
           });
       }
     }
