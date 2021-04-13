@@ -34,7 +34,7 @@ export default {
 
 
 #top{
-    background-image: url("https://www.freewebheaders.com/wp-content/gallery/wildlife/african-lion-header.jpg");
+    background-image: url("../../assets/african-lion-header.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
