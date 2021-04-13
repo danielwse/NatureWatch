@@ -52,6 +52,15 @@ export default {
         async fetchQuestions() {
             var uid = firebase.auth().currentUser.uid;
             console.log(uid);
+
+            //Prevent mutiple refresh
+            var chanceLeft = await database.collection('Users').doc(uid).get().then(doc => 
+                doc.data().chanceLeft);
+            if (chanceLeft<=0) {
+                alert("No chance left today! Please take note that every refresh will take 1 chance even though no submission has been made.");
+                this.$router.push('/playtoplant');
+            }
+
             database.collection('Users').doc(uid).update({
                 chanceLeft: firebase.firestore.FieldValue.increment(-1)
             });
@@ -120,7 +129,10 @@ export default {
     },
     created() {
         document.body.style.backgroundColor = "#343434" 
-        this.fetchQuestions()
+        const self = this;
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) self.fetchQuestions();
+        })
     },
 }
 </script>

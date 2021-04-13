@@ -104,34 +104,34 @@ export default {
   },
   methods: {
     fetchData:function() {
-        var uid = firebase.auth().currentUser.uid;
-        if (uid!=null) {
-            console.log(uid);
-            database.collection('Users').doc(uid).get().then(doc => this.user= doc.data());
-        }
+      var uid = firebase.auth().currentUser.uid;
+      database.collection('Users').doc(uid).get().then(doc => this.user= doc.data());
 
-        database.collection('Users').orderBy('trees','desc').limit(5).orderBy('name').get().then(snapshot=> {
-          var totalTrees=0;
-          snapshot.docs.forEach(doc => {
-            var data=doc.data();
-            totalTrees += data.trees;
-            this.nameList.push({id:doc.id,name:data.name,trees:data.trees});
-          })
-          this.totalTrees=totalTrees;
+      database.collection('Users').orderBy('trees','desc').limit(8).orderBy('name').get().then(snapshot=> {
+        var totalTrees=0;
+        snapshot.docs.forEach(doc => {
+          var data=doc.data();
+          totalTrees += data.trees;
+          this.nameList.push({id:doc.id,name:data.name,trees:data.trees});
         })
+        this.totalTrees=totalTrees;
+      })
 
-        database.collection('Users').orderBy('longestStreak','desc').limit(5).orderBy('name').get().then(snapshot=> {
-          snapshot.docs.forEach(doc => {
-            var data=doc.data();
-            this.streakList.push({id:doc.id,name:data.name,streak:data.longestStreak});
-          })
+      database.collection('Users').orderBy('longestStreak','desc').limit(8).orderBy('name').get().then(snapshot=> {
+        snapshot.docs.forEach(doc => {
+          var data=doc.data();
+          this.streakList.push({id:doc.id,name:data.name,streak:data.longestStreak});
         })
+      })
     }
   },
   created() {
-    this.fetchData();
-  }
-};
+    const self = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) self.fetchData();
+    })
+  },
+}
 </script>
 
 <style scoped>
