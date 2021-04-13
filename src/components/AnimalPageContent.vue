@@ -54,6 +54,9 @@ data () {
                 type: String
             }
         },
+        created() {
+            document.body.style.backgroundColor = "#343434";
+        },
 }
 
 </script>

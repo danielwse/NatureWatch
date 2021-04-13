@@ -46,6 +46,9 @@ data () {
                 type: String
             }
         },
+        created() {
+            document.body.style.backgroundColor = "#dfbb84";
+        },
 }
 
 </script>
