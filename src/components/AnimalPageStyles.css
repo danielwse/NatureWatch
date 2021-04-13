@@ -81,7 +81,7 @@
     height: 100%;
     display: block;
     float: left;
-    padding-top: 20px;
+    padding-top: 60px;
     
  }
 .rightAnimal {
@@ -89,13 +89,13 @@
     height: 100%;
     float: right;
     display: block;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 .middleAnimal {
     width: 40%;
     height: 100%;
     display: block;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 #oddAnimalMainText {

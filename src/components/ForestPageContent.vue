@@ -4,7 +4,7 @@
         <img id = 'forestPic' :src='forest.imageURL'>
        <p v-if= "forestIndex == 'oddForest'" id = 'oddGenericNames' >{{ forest.genericName}}</p>
        <p v-else id = 'evenGenericNames'>{{ forest.genericName}}</p>
-        <p id = 'donationText'> Donation Links </p>
+        <p id = 'donationText'> Donate </p>
             <div id = 'donationLinks'>
                 <a :href= 'forest.donationURL1' target="_blank"><img :src ='forest.donationURLImage1'></a>
                 <a :href = 'forest.donationURL2' target="_blank"><img :src ='forest.donationURLImage2'></a>
