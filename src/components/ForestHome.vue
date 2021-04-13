@@ -89,5 +89,6 @@ export default {
 .container{
     top:10vh;
     position:relative;
+    z-index: -1;
 }
 </style>

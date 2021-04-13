@@ -7,6 +7,7 @@
     <ul>
       <li><router-link to="/" exact>Home</router-link></li>
       <li><router-link to="/playtoplant" exact>Play to Plant!</router-link></li>
+      <a id = "naturestats" href="https://naturestatistics.herokuapp.com/" target="_blank">NatureStatistics</a>
       <li class="dropdown1">
         <a :href="$router.resolve({ name: 'Forests' }).href">Forests</a>
 
@@ -55,6 +56,21 @@ ul {
   font-size: 1.3em;
   text-align: left;
   text-decoration: none;
+}
+
+#naturestats {
+    float: left;
+    margin-left: 0%;
+  color: white;
+  text-align: left;
+  margin-top: 50px;
+  font-size: 1.3em;
+  font-weight: 500;
+  padding: 0px 16px;
+  text-decoration: none;
+
+
+
 }
 li {
   float: left;

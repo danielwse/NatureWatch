@@ -1,21 +1,17 @@
 <template>
     <div id="top">
-        <p id="head">Vulnerable</p>
+        <p id="head"> User Dashboard</p>
         <app-header></app-header>
-        <SearchBar></SearchBar>
     </div>
 </template>
 
 <script>
 import Header from './Header.vue'
-import SearchBar from './SearchBar.vue'
 
 export default {
      components:{
-        'app-header':Header,
-        SearchBar
-     }
-
+        'app-header':Header
+     },
 }
 </script>
 <style scoped>
@@ -34,11 +30,10 @@ export default {
 
 
 #top{
-    background-image: url("../../assets/v_header.jpg");
+    background-image: url("https://www.coillte.ie/media/2016/10/forest-header.png");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
     height:180px;
 }
-
 </style>
