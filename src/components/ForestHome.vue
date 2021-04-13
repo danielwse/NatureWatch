@@ -67,11 +67,9 @@ export default {
         mouseOverCountry: function(index){
             
             this.countries[index].iconSize = this.largeIcon
-            //console.log(this.countries[index].name + " size: " + this.countries[index].iconSize)
         },
         mouseLeftCountry: function(index){
             this.countries[index].iconSize = this.normalIcon
-            //console.log(this.countries[index].name + " size: " + this.countries[index].iconSize)
         },
         mouseClickCountry: function(index){
             var curr = this.countries[index]
@@ -88,19 +86,16 @@ export default {
 <style scoped>
 .container{
     top:10vh;
-    position:relative;
-    
+    position:relative;    
 }
 
 #background{
-
     background-image: url("../assets/night-sky-1.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
     height: 500px;
-    
-
+    z-index: -1;
 }
 
 .text-center{

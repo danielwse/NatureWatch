@@ -29,7 +29,6 @@ export default {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 #top{
     background-image: url("https://www.sezarc.org/sites/default/files/internal-header-5.jpg");
     background-position: center; /* Center the image */
@@ -37,5 +36,4 @@ export default {
     background-size: cover; 
     height:180px;
 }
-
 </style>

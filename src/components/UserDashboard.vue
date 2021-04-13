@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Forest></Forest>
+    <Header></Header>
     <div class="grid-container">
       <div class="firstGrid">
         <div class="leftStreak">
@@ -83,14 +83,14 @@
 </template>
 
 <script>
-import Forest from "./Headers/Forest.vue";
+import Header from "./Headers/QuizStats.vue";
 import RadialProgressBar from "vue-radial-progress";
 import firebase from "firebase";
 import database from "../firebase.js"
 
 export default {
   components: {
-    Forest,
+    Header,
     RadialProgressBar,
   },
   data() {
@@ -110,7 +110,7 @@ export default {
             database.collection('Users').doc(uid).get().then(doc => this.user= doc.data());
         }
 
-        database.collection('Users').orderBy('trees','desc').limit(10).orderBy('name').get().then(snapshot=> {
+        database.collection('Users').orderBy('trees','desc').limit(5).orderBy('name').get().then(snapshot=> {
           var totalTrees=0;
           snapshot.docs.forEach(doc => {
             var data=doc.data();
@@ -120,7 +120,7 @@ export default {
           this.totalTrees=totalTrees;
         })
 
-        database.collection('Users').orderBy('longestStreak','desc').limit(10).orderBy('name').get().then(snapshot=> {
+        database.collection('Users').orderBy('longestStreak','desc').limit(5).orderBy('name').get().then(snapshot=> {
           snapshot.docs.forEach(doc => {
             var data=doc.data();
             this.streakList.push({id:doc.id,name:data.name,streak:data.longestStreak});
@@ -158,12 +158,14 @@ export default {
   justify-content: center;
 }
 #streakNum {
-  font-size: 50px;
-  color: green;
+  height: 50px;
+  width: 50px;
+  font-size: 44px;
+  color: darkred;
+  margin-bottom: 10px;
 }
 
 .chart {
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   background: #C0EFF6;
@@ -258,11 +260,10 @@ export default {
 .leaderboard .body {
 	color: snow;
 	font-size: 20px;
-  border: 1px solid yellow;
+  border: 2px solid black;
 }
 .leaderboard ol {
 	counter-reset: number;
-  border: 1px solid blue;
   padding-left: 0px;
   padding-right: 0px;
   margin-top: 0px;
@@ -272,11 +273,19 @@ export default {
 .leaderboard li {
 	padding: 16px;
 	display: flex;
-  border: 1px solid white;
+}
+.leaderboard li::before {
+  color: white;
+}
+.leaderboard li small {
+  color: darkgreen;
+  font-weight: bold;
+  font-size: 28px;
+  margin-right: 20px;
 }
 .leaderboard li mark {
 	flex-grow: 1;
-	color: snow;
+	color: lightcyan;
 	background-color: transparent;
 }
 .leaderboard li:before {

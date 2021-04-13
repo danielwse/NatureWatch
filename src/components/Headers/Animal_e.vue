@@ -33,7 +33,7 @@ export default {
 
 
 #top{
-    background-image: url("https://www.freewebheaders.com/wp-content/gallery/wildlife/wildlife-header-22246-800x200.jpg");
+    background-image: url("../../assets/e_header.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 
