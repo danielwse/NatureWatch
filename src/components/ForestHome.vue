@@ -1,6 +1,6 @@
 <template>
 <div>
-    <ForestHeader v-bind:forestName = 'name'></ForestHeader>
+    <ForestHeader class='header' v-bind:forestName = 'name'></ForestHeader>
     <div id="background">
         <div class="container">
             <div class = "row">
@@ -85,21 +85,37 @@ export default {
 
 <style scoped>
 .container{
-    top:10vh;
+    top:5vh;
     position:relative;    
+    z-index: 1;
 }
 
-#background{
-    background-image: url("../assets/night-sky-1.jpg");
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    height: 500px;
+.header {
+    position: relative;
+    z-index: 2;
+}
+
+#background:before {
+     content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: -1;
-}
+    background: url('../assets/forest-bg-1.jpg');
+    opacity: 0.8;    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    height: 1300px;
+    opacity: 0.4;
+    
 
+}
 .text-center{
-    color:white
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 

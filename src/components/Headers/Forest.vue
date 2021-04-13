@@ -36,7 +36,7 @@ export default {
 
 
 #top{
-    background-image: url("https://www.coillte.ie/media/2016/10/forest-header.png");
+    background-image: url("../../assets/forest_header.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 

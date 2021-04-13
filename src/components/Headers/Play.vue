@@ -30,7 +30,7 @@ export default {
 }
 
 #top{
-    background-image: url("https://www.sezarc.org/sites/default/files/internal-header-5.jpg");
+    background-image: url("../../assets/quiz-header3.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; 
     background-size: cover; 

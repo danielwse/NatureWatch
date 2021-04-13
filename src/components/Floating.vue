@@ -7,15 +7,17 @@
             </header>
             <footer class="modal-footer" v-on:click="redirect">
                 <img src="../assets/stats.png" width="50px">
-                <span v-bind:style="{color:'white'}">Click to see <br>the statistics!</span>  
+                <span v-bind:style="{color:'white'}">Your Statistics</span>  
             </footer>
             <footer class="modal-footer" v-on:click="logout">
                 <img src="../assets/exit.png" width="50px">
-                <span>Click to logout</span>
+                <span>Logout</span>
             </footer>
         </div>
 
-        <div class="align2" v-if="!userName">Please click the seedling to login first!</div>
+        <pre class="align2" v-if="!userName">
+            Please click the
+            seedling to login!</pre>
 
     </div>
 </template>
@@ -71,11 +73,13 @@ export default {
 }
 .align2 {
     color:white;
-    font-size:25px;
+    font-size:1.5vw;
     position: relative;
     bottom:200px;
-    right:50px;
+    right: 3%;
     float: right;
+    white-space: pre-wrap;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
  .modal-header,
   .modal-footer {
@@ -97,6 +101,7 @@ export default {
     justify-content: space-evenly;
     background: rgb(114 170 74);
     border-radius: 100px 0px 100px 0px;
+    cursor: pointer;
 }
 .smallWhite {
         color:#FFFFFF;

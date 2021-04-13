@@ -100,6 +100,7 @@ export default {
         font-family: "Mohave";
         line-height:1.5;
     }
+
     .bigWhite {
         color:#FFFFFF;
         font-size: 64px;
@@ -119,7 +120,6 @@ export default {
         font-size:24px;
     }
     .imagefield {
-        position: fixed;
-        left:30%;
+        position: relative;
     }
 </style>

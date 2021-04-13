@@ -8,7 +8,7 @@
             <div id = 'donationLinks'>
                 <a :href= 'forest.donationURL1' target="_blank"><img :src ='forest.donationURLImage1'></a>
                 <a :href = 'forest.donationURL2' target="_blank"><img :src ='forest.donationURLImage2'></a>
-                <a :href = 'forest.donationURL3' target="_blank"><img :src ='forest.donationURLImage3'></a>
+                <a v-if="typeof(forest.donationURL3) != 'undefined'" :href = 'forest.donationURL3' target="_blank"><img :src ='forest.donationURLImage3'></a>
             </div>
         </div>
         <div class = 'middle'>
