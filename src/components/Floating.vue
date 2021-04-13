@@ -70,13 +70,15 @@ export default {
     position: relative;
     bottom:240px;
     float: right;
+    width: 18%;
 }
 .align2 {
     color:white;
-    font-size:1.5vw;
+    font-size:1.2vw;
     position: relative;
     bottom:200px;
     right: 3%;
+    width: 18%;
     float: right;
     white-space: pre-wrap;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -92,7 +94,7 @@ export default {
   .modal-header {
     position: relative;
     justify-content: space-evenly;
-    font-size:25px;
+    font-size: 15px;
     background-color: rgb(158 191 81);
     border-radius: 100px 0px 100px 0px;
 }
