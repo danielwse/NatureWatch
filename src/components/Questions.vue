@@ -57,40 +57,39 @@ export default {
             var chanceLeft = await database.collection('Users').doc(uid).get().then(doc => 
                 doc.data().chanceLeft);
             if (chanceLeft<=0) {
-                alert("No chance left today! Please take note that every refresh will take 1 chance even though no submission has been made.");
+                alert("No chance left today! Please take note that every refresh will consume 1 chance even though no submission has been made.");
                 this.$router.push('/playtoplant');
-            }
 
-            database.collection('Users').doc(uid).update({
-                chanceLeft: firebase.firestore.FieldValue.increment(-1)
-            });
-            console.log("updated");
-            
-            this.questionsList = await database.collection('Users').doc(uid).get().then(doc => 
-               doc.data().questionsList);
-               console.log("this is list");
-               console.log(this.questionsList);
-   
-               
-            for (let i=0;i<5;i++) {    
-                var index = Math.floor(Math.random() * this.questionsList.length);
-                console.log("index is ",index);
-                console.log("question list is ",this.questionsList);
-                var id = this.questionsList[index];
-                this.questionsList.splice(index,1);
-                database.collection('Questions').doc(id).get().then(doc=> {
-                    this.questions.push(doc.data());
-                    console.log(doc.data());
-                    database.collection('Answers').doc(doc.id).get().then(doc => {
-                        this.correctAnswer.push(doc.data().answer);
-                            console.log(doc.data().answer);
-                    })
-                })      
+            } else {
+
+                database.collection('Users').doc(uid).update({
+                    chanceLeft: firebase.firestore.FieldValue.increment(-1)
+                });
+                
+                this.questionsList = await database.collection('Users').doc(uid).get().then(doc => 
+                   doc.data().questionsList);
+                   console.log("this is list");
+                   console.log(this.questionsList);
+                   
+                for (let i=0;i<5;i++) {    
+                    var index = Math.floor(Math.random() * this.questionsList.length);
+                    console.log("index is ",index);
+                    console.log("question list is ",this.questionsList);
+                    var id = this.questionsList[index];
+                    this.questionsList.splice(index,1);
+                    database.collection('Questions').doc(id).get().then(doc=> {
+                        this.questions.push(doc.data());
+                        console.log(doc.data());
+                        database.collection('Answers').doc(doc.id).get().then(doc => {
+                            this.correctAnswer.push(doc.data().answer);
+                                console.log(doc.data().answer);
+                        })
+                    })      
+                }
+                database.collection('Users').doc(uid).update({
+                    questionsList: this.questionsList,
+                });
             }
-            database.collection('Users').doc(uid).update({
-                questionsList: this.questionsList,
-            });
-     
         },
         matchAnswer:function(key) {
             var cor = this.correctAnswer[this.index];
