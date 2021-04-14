@@ -25,11 +25,11 @@ based on PageContent
 
 <script>
 import PageContent from './AnimalPageContent.vue';
-import database from '../firebase.js';
-import CEHeader from './Headers/Animal_ce.vue';
-import EHeader from './Headers/Animal_e.vue';
-import VHeader from './Headers/Animal_v.vue';
-import SearchBar from './Headers/SearchBar.vue';
+import database from '../../firebase.js';
+import CEHeader from '../Headers/Animal_ce.vue';
+import EHeader from '../Headers/Animal_e.vue';
+import VHeader from '../Headers/Animal_v.vue';
+import SearchBar from '../Headers/SearchBar.vue';
 
 export default {
     data() {

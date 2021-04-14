@@ -10,8 +10,8 @@
 
 <script>
 import PageContent from './ForestPageContent.vue';
-import database from '../firebase.js';
-import ForestHeader from './Headers/Forest.vue';
+import database from '../../firebase.js';
+import ForestHeader from '../Headers/Forest.vue';
 export default {
     data() {
         return {

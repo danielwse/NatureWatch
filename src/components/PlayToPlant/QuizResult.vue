@@ -20,14 +20,14 @@
 
         <span class="smallWhite" v-show="chances<=0">No chance left today. Come tomorrow!</span>
         <span class="smallWhite" v-show="chances>0">You have {{chances}} chance left!</span> nbsp
-        <img src="../assets/plant.svg" style="width:400px vertical-align:middle" v-on:click="redirect"><br><br>
+        <img src="../../assets/plant.svg" style="width:400px vertical-align:middle" v-on:click="redirect"><br><br>
 
     </div>
 </template>
 
 <script>
-import database from "../firebase.js"
-import PlayHeader from './Headers/Play.vue'
+import database from "../../firebase.js"
+import PlayHeader from '../Headers/Play.vue'
 import firebase from "firebase"
 import Floating from "./Floating.vue"
 export default {

@@ -35,9 +35,9 @@
 import { LMap, LTileLayer, LMarker, LIcon, LPopup, LControl } from 'vue2-leaflet';
 import L from 'leaflet'
 import { Icon } from 'leaflet';
-import blacktree from '../assets/blacktree.png'
-import redtree from '../assets/redtree.png'
-import greentree from '../assets/greentree.png'
+import blacktree from '../../assets/blacktree.png'
+import redtree from '../../assets/redtree.png'
+import greentree from '../../assets/greentree.png'
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),

@@ -5,16 +5,16 @@
         <div>
             <span class="bigWhite">Welcome to </span>
             <span class="lightGreen">Play to Plant!</span><br>
-            <span class="green">for every 5 questions that you answer correctly NatureWatch donates the costs<br>
-                required to plant a tree in the Amazon Rainforest!</span><br>
-            <span class="green align">In collaboration with  </span>
-            <img class="align" src="../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px">
+            <span class="green">For every 5 questions that you answer correctly, NatureWatch donates the cost<br>
+                required to plant one tree in the Amazon Rainforest!</span><br>
+            <span class="green align" style="color:white">In collaboration with  </span>
+            <a href="https://onetreeplanted.org/"><img class="align" src="../../assets/oneTreePlanted_logo.png" alt="Not found" style="width:168px"></a>
             <Floating></Floating>
         </div>
 
         <div class="imagefield">
             <span class="smallWhite">Click me to start planting trees! </span>
-            <img src="../assets/plant.svg" style="width:400px" v-on:click="showModal">
+            <img src="../../assets/plant.svg" style="width:400px" v-on:click="showModal">
         </div>
         <Modal v-show="isModalVisible" v-on:close="closeModal"/>
 
@@ -23,9 +23,9 @@
 
 <script>
 import Modal from './Modal.vue';
-import PlayHeader from './Headers/Play.vue';
+import PlayHeader from '../Headers/Play.vue';
 import firebase from "firebase";
-import database from "../firebase.js";
+import database from "../../firebase.js";
 import Floating from './Floating.vue';
 export default {
     name: 'QuizCover',
@@ -96,28 +96,33 @@ export default {
 </script>
 
 <style scoped>
-    * {
-        font-family: "Mohave";
-        line-height:1.5;
-    }
 
     .bigWhite {
         color:#FFFFFF;
         font-size: 64px;
+        font-family: "Mohave";
+        line-height: 1.5;
     }
     .smallWhite {
         color:#FFFFFF;
         font-size:24px;
         vertical-align: bottom;
         line-height:400px;
+
     }
     .lightGreen{
         color: #4FE11C;
         font-size: 64px;
+        font-family: "Mohave";
+        line-height:1.5;
+
     }
     .green{
         color: #A2EA89;
         font-size:24px;
+        font-family: "Mohave";
+        line-height:1.5;
+
     }
     .imagefield {
         position: relative;

@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import database from "../firebase.js"
-import PlayHeader from './Headers/Play.vue';
+import database from "../../firebase.js"
+import PlayHeader from '../Headers/Play.vue';
 import firebase from "firebase"
 export default {
     name: 'Questions',

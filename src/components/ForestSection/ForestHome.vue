@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import ForestHeader from './Headers/Forest.vue';
+import ForestHeader from '../Headers/Forest.vue';
 import leafMap from './map.vue'
-import database from '../firebase.js'
+import database from '../../firebase.js'
 import CountryList from './CountryList.vue'
 export default {
     name:"Map",
@@ -103,7 +103,7 @@ export default {
     left: 0;
     right: 0;
     z-index: -1;
-    background: url('../assets/forest-bg-1.jpg');
+    background: url('../../assets/forest-bg-1.jpg');
     opacity: 0.8;    
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -114,7 +114,7 @@ export default {
 
 }
 .text-center{
-    color:black;
+    color:white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

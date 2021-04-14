@@ -26,9 +26,9 @@ Layout for animal homepage. When user clicks 'Animal' in the header
 </template>
 
 <script>
-import database from '../firebase.js';
-import Animal from './Headers/Animal.vue';
-import SearchBar from './Headers/SearchBar.vue';
+import database from '../../firebase.js';
+import Animal from '../Headers/Animal.vue';
+import SearchBar from '../Headers/SearchBar.vue';
 export default {
     data() {
         return {
@@ -72,7 +72,7 @@ created:function() {
     left: 0;
     right: 0;
     z-index: -1;
-    background: url('../assets/animalhomebg.jpg');
+    background: url('../../assets/animalhomebg.jpg');
     opacity: 0.8;    
     background-repeat: no-repeat;
     background-attachment: fixed;

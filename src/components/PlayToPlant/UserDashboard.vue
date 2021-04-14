@@ -5,14 +5,14 @@
       <div class="firstGrid">
         <div class="leftStreak">
           <div class="streak">
-            <img src="../assets/flame.svg" />
+            <img src="../../assets/flame.svg" />
             <span id="streakNum"><b>{{user.streak}}</b></span>
           </div>
           <h3><b>Streak </b></h3>
         </div>
         <div class="rightStreak">
           <div class="streak">
-            <img src="../assets/flame.svg" />
+            <img src="../../assets/flame.svg" />
             <span id="streakNum"><b>{{user.longestStreak}}</b></span>
           </div>
           <h3><b> Longest Streak </b></h3>
@@ -21,14 +21,14 @@
       <div class="card1">
         <div class="container">
           <span id="treeNum"><b>{{user.trees}}</b></span>
-          <img src="../assets/tree.svg" />
+          <img src="../../assets/tree.svg" />
         </div>
         <h3><b>Planted By You</b></h3>
       </div>
       <div class="card2">
         <div class="container">
           <span id="treeNum"><b>{{totalTrees}}</b></span>
-          <img src="../assets/tree.svg" />
+          <img src="../../assets/tree.svg" />
         </div>
         <h3><b>Planted By NatureWatch</b></h3>
       </div>
@@ -83,10 +83,10 @@
 </template>
 
 <script>
-import Header from "./Headers/QuizStats.vue";
+import Header from "../Headers/QuizStats.vue";
 import RadialProgressBar from "vue-radial-progress";
 import firebase from "firebase";
-import database from "../firebase.js"
+import database from "../../firebase.js"
 
 export default {
   components: {
