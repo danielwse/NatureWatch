@@ -153,7 +153,7 @@ import database from "../../firebase.js"
                     })
                 } else {
                   database.collection("Users").doc(user.uid).update({
-                    streak:1
+                    streak:0
                   })
                 }
               }
