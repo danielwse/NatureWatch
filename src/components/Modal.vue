@@ -72,7 +72,6 @@ import database from "../firebase.js"
         this.isModalVisible = false;
       },
       login() {
-
         firebase
           .auth()
           .signInWithEmailAndPassword(this.user.email, this.user.password)
