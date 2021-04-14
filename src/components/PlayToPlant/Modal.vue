@@ -83,7 +83,7 @@ import database from "../../firebase.js"
                 lastSignInTime: user.metadata.lastSignInTime,
               })
               console.log(value);
-            }).then(this.close());
+            }).then(this.close()).then(location.reload());
           })
           .catch(error => {
             var errorCode = error.code;
