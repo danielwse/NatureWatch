@@ -7,6 +7,42 @@
                 <div class = "col-12">
                     <h1 class="text-center">Deforestation by Countries</h1>
                     <br>
+                    <h4 class="text-center">Click on each icon on the map to find out more!</h4>
+                    <br>
+                    <ul class='list-group list-group-flush'>
+                        <li>
+                            <img src="../../assets/redtree.png" alt=""
+                            contain
+                            height="30px"
+                            width="30px"> <span class="text-center"> {{red}} </span>
+                            <img src="../../assets/redtree.png" alt=""
+                            contain
+                            height="30px"
+                            width="30px">
+                        </li>
+                        <li>
+                            <img src="../../assets/greentree.png" alt=""
+                            contain
+                            height="30px"
+                            width="30px"> <span class="text-center"> {{green}} </span>
+                            <img src="../../assets/greentree.png" alt=""
+                            contain
+                            height="30px"
+                            width="30px">
+                        </li>
+                        <li>
+                            <img src="../../assets/blacktree.png" alt=""
+                            contain
+                            height="30px"
+                            width="30px"> <span class="text-center"> {{black}} </span>
+                            <img src="../../assets/blacktree.png" alt=""
+                            contain
+                            height="30px"
+                            width="30px">
+                        </li>
+                    </ul>
+                    <br>
+                    
                 </div>
 
                 <div class = "col-8">
@@ -38,6 +74,7 @@ import ForestHeader from '../Headers/Forest.vue';
 import leafMap from './map.vue'
 import database from '../../firebase.js'
 import CountryList from './CountryList.vue'
+//import IL from './IconLegend.vue'
 export default {
     name:"Map",
     data() {
@@ -46,13 +83,17 @@ export default {
             countries:[],
             normalIcon: [15,15],
             largeIcon: [50,50],
-            currentHover: [33.93911, 67.709953]
+            currentHover: [33.93911, 67.709953],
+            red: "Tree cover lost in the past 5 years",
+            green: "Tree cover gain in the past 5 years",
+            black: "No change in tree cover in the past 5 years",
         }
     },
     components: {
         ForestHeader,
         leafMap,
-        CountryList
+        CountryList,
+        //IL
     },
     methods:{
         fetchCountries: function() {
@@ -114,9 +155,21 @@ export default {
 
 }
 .text-center{
-    color:white;
+    color:#343434;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+li {
+    font-size: 12px;
+}
+
+ul {
+  list-style-type: none; /* Remove bullets */
+
+}
+
+.col-8{
+    border: 3px solid;
+}
 
 </style>
