@@ -137,10 +137,6 @@ export default {
 </script>
 
 <style scoped>
- * {
-        font-family: "Mohave";
-        line-height:1.5;
-    }
  .bigWhite {
         color:#FFFFFF;
         font-size: 36px;
@@ -148,6 +144,8 @@ export default {
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
+        font-family: "Mohave";
+        line-height: 1.5;
    
     }
  #a, #b,#c,#d {
