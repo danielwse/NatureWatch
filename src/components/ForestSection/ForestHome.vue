@@ -1,7 +1,7 @@
 <template>
 <div>
     <ForestHeader class='header' v-bind:forestName = 'name'></ForestHeader>
-    <div id="background10">
+    <div id="background">
         <div class="container">
             <div class = "row">
                 <div class = "col-12">
