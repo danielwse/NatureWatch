@@ -136,8 +136,9 @@ export default {
     z-index: 2;
 }
 
-#background {
-    position: relative;
+#background::before{
+    content: "";
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -147,19 +148,22 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    height: 1000px;
+    height: 1200px;
+}
+#background{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color:rgba(255, 255, 255, 0.7);
+    height: 1200px;
 
 }
-
-#background::before{
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background-color: rgba(250, 250, 250, 0.4);
+#app{
+    background-color:white;
 }
+
 
 .text-center{
     color:#343434;
@@ -168,7 +172,7 @@ export default {
 }
 
 li {
-    font-size: 15px;
+    font-size: 12px;
 }
 
 ul {
