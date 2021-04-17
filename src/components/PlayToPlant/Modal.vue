@@ -78,12 +78,12 @@ import database from "../../firebase.js"
           .then(() => {
             alert('Successfully logged in');
             var user = firebase.auth().currentUser;
-            this.updateAttributes(this.lastSignIn).then((value)=> {
+            this.updateAttributes(this.lastSignIn).then(()=> {
               database.collection("Users").doc(user.uid).update({
                 lastSignInTime: user.metadata.lastSignInTime,
               })
-              console.log(value);
-            }).then(this.close()).then(location.reload());
+              console.log(user.metadata.lastSignInTime);
+            }).then(this.close());
           })
           .catch(error => {
             var errorCode = error.code;
