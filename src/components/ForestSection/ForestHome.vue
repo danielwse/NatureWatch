@@ -147,7 +147,7 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    height: 1000px;
+    height: 1500px;
 
 }
 
