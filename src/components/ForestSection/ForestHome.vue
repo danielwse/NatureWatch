@@ -1,7 +1,7 @@
 <template>
 <div>
     <ForestHeader class='header' v-bind:forestName = 'name'></ForestHeader>
-    <div id="background">
+    <div id="background10">
         <div class="container">
             <div class = "row">
                 <div class = "col-12">
@@ -168,7 +168,7 @@ export default {
 }
 
 li {
-    font-size: 12px;
+    font-size: 15px;
 }
 
 ul {

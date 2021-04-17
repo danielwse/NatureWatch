@@ -1,26 +1,30 @@
 <template>
     <div>
         <PlayHeader></PlayHeader><br>
-        <div class="align-left">
+        <div>
             <div v-show="counter==5">
                 <div class="bigWhite">Congratulations!</div>
-                <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}"> Your scored </span>
-                <span v-bind:style="{color:'#9BDF84', fontSize:'48px'}">{{counter}}/5 </span>
-                <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}"> and planted 1 tree!</span><br>
+                <span v-bind:style="{color:'#FFFFFF', fontSize:'28px'}"> Your scored </span>
+                <span v-bind:style="{color:'#9BDF84', fontSize:'28px'}">{{counter}}/5 </span>
+                <span v-bind:style="{color:'#FFFFFF', fontSize:'28px'}"> and planted 1 tree!</span><br>
+                <br><br><br><br>
             </div>
 
             <div v-show="counter!=5">
                 <div class="bigWhite">Try again!</div><br>
-                <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}"> Your scored </span>
-                <span v-bind:style="{color:'#9BDF84', fontSize:'48px'}">{{counter}}/5 </span>
-                <span v-bind:style="{color:'#FFFFFF', fontSize:'48px'}">! {{5-counter}} more score(s) to plant 1 tree!</span><br>
-            </div>
-        </div>
-        <Floating></Floating>
+                <span v-bind:style="{color:'#FFFFFF', fontSize:'28px'}"> Your scored </span>
+                <span v-bind:style="{color:'#9BDF84', fontSize:'28px'}">{{counter}}/5</span>
+                <span v-bind:style="{color:'#FFFFFF', fontSize:'28px'}">! {{5-counter}} more point(s) to plant 1 tree!</span><br>
+                <br><br><br>
+            </div>  
 
-        <span class="smallWhite" v-show="chances<=0">No chance left today. Come tomorrow!</span>
-        <span class="smallWhite" v-show="chances>0">You have {{chances}} chance left!</span> nbsp
-        <img src="../../assets/plant.svg" style="width:400px vertical-align:middle" v-on:click="redirect"><br><br>
+            <Floating></Floating>
+        </div>
+        <div class="imagefield2">
+    <span class="smallWhite" v-show="chances<=0">0 chances left. Come back tomorrow!</span>
+        <span class="smallWhite" v-show="chances>0">You have {{chances}} chance(s) left!</span>
+        <img src="../../assets/plant.svg" style="width:400px" v-on:click="redirect"><br><br>
+        </div>
 
     </div>
 </template>
@@ -47,7 +51,7 @@ export default {
     methods:{
         redirect:function() {
             if (this.chances>0) this.$router.push('/Questions');
-        }
+        },
     },
     created:function() {
         document.body.style.backgroundColor = "#343434";
@@ -60,18 +64,18 @@ export default {
 </script>
 
 <style scoped>
-    * {
-        font-family: "Mohave";
-        line-height:1.5;
-    }
     .bigWhite {
         color:#FFFFFF;
         font-size: 64px;
+        font-family: "Mohave";
+        line-height: 1.5;
     }
     .smallWhite {
         color:#FFFFFF;
         font-size:24px;
-        vertical-align: bottom;
-        line-height:400px;
+        vertical-align: top;
+        line-height: 260px;
+        margin-right: 20px;
     }
+
 </style>

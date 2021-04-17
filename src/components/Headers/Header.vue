@@ -22,7 +22,7 @@
         </div>
       </li>
       <li class="dropdown1">
-        <router-link to="/animal" exact class="dropbtn">Animal</router-link>
+        <router-link to="/animal" exact class="dropbtn">Animals</router-link>
         <div class="dropdown-content">
           <a :href="$router.resolve({ name: 'CE' }).href"
             >Critically Endangered</a

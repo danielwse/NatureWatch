@@ -78,7 +78,7 @@ export default {
                 
                 database.collection("Users").doc(user.uid).get().then(doc=> {
                     if (doc.data().chanceLeft!=0) this.$router.push('/Questions');
-                    else alert("Chance used up today.Come tomorrow!");
+                    else alert("All chances used up today. Try again tomorrow!");
                 });
             }
             else this.isModalVisible = true;
