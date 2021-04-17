@@ -22,7 +22,7 @@
         </div>
         <div class="imagefield2">
     <span class="smallWhite" v-show="chances<=0">0 chances left. Come back tomorrow!</span>
-        <span class="smallWhite" v-show="chances>0">You have {{chances}} chance left!</span>
+        <span class="smallWhite" v-show="chances>0">You have {{chances}} chance(s) left!</span>
         <img src="../../assets/plant.svg" style="width:400px" v-on:click="redirect"><br><br>
         </div>
 
@@ -51,7 +51,7 @@ export default {
     methods:{
         redirect:function() {
             if (this.chances>0) this.$router.push('/Questions');
-        }
+        },
     },
     created:function() {
         document.body.style.backgroundColor = "#343434";
