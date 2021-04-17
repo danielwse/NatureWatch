@@ -136,9 +136,8 @@ export default {
     z-index: 2;
 }
 
-#background10:before {
-     content: "";
-    position: absolute;
+#background {
+    position: relative;
     top: 0;
     bottom: 0;
     left: 0;
@@ -148,14 +147,24 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    height: 1500px;
-    opacity: 0.4;
-    
+    height: 1000px;
 
 }
+
+#background::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(250, 250, 250, 0.4);
+}
+
 .text-center{
     color:#343434;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 1;
 }
 
 li {
