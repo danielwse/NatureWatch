@@ -77,7 +77,7 @@ body{
   font-size: 30px;
   top:20vh;
   position:relative;
-  color:#FFFFFF;
+  color:#f9d451;
   font-weight: 600;
 
 }
