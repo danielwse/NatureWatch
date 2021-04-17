@@ -149,6 +149,7 @@ export default {
     background-attachment: fixed;
     background-size: 100% 100%;
     height: 1200px;
+
 }
 #background{
     position: relative;
@@ -159,9 +160,6 @@ export default {
     background-color:rgba(255, 255, 255, 0.7);
     height: 1200px;
 
-}
-#app{
-    background-color:white;
 }
 
 

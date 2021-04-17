@@ -72,8 +72,9 @@ import firebase from "firebase"
             var user = firebase.auth().currentUser;
             var uid = user.uid;
             console.log(this.user.questionsList);
-            database.collection('Users').doc(uid).set(this.user);
-            this.$emit('close');
+            database.collection('Users').doc(uid).set(this.user).then(this.$emit('close'))
+            .then(firebase.auth().signOut());
+            
           })
           .catch(error => {
             var errorCode = error.code;
