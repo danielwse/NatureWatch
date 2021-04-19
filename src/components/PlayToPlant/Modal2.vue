@@ -71,7 +71,6 @@ import firebase from "firebase"
             alert('Successfully registered! Please login.');
             var user = firebase.auth().currentUser;
             var uid = user.uid;
-            console.log(this.user.questionsList);
             database.collection('Users').doc(uid).set(this.user).then(this.$emit('close'))
             .then(firebase.auth().signOut());
             

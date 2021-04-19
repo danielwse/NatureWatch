@@ -2,10 +2,10 @@
     <div>
         <PlayHeader></PlayHeader><br><br>
         <div v-bind:style="{color:'#FFFFFF', fontSize:'64px'}">Question {{index+1}} </div><br>
-        <div v-bind:style="{color:'#45A025', fontSize:'36px'}">
+        <div v-bind:style="{color:'#45A025', fontSize:'36px'}" v-if="questions[index]">
             {{questions[index].cont}}
         </div><br>
-        <div class="bigWhite">
+        <div class="bigWhite" v-if="questions[index]">
         <div id="a" v-on:click="matchAnswer('a')">a.{{questions[index].a}}</div>
         <div id="b" v-on:click="matchAnswer('b')">b.{{questions[index].b}}</div>
         <div id="c" v-on:click="matchAnswer('c')">c.{{questions[index].c}}</div>
@@ -51,7 +51,6 @@ export default {
     methods: {
         async fetchQuestions() {
             var uid = firebase.auth().currentUser.uid;
-            console.log(uid);
 
             //Prevent mutiple refresh
             var chanceLeft = await database.collection('Users').doc(uid).get().then(doc => 
@@ -68,21 +67,16 @@ export default {
                 
                 this.questionsList = await database.collection('Users').doc(uid).get().then(doc => 
                    doc.data().questionsList);
-                   console.log("this is list");
-                   console.log(this.questionsList);
                    
                 for (let i=0;i<5;i++) {    
                     var index = Math.floor(Math.random() * this.questionsList.length);
-                    console.log("index is ",index);
-                    console.log("question list is ",this.questionsList);
                     var id = this.questionsList[index];
+
                     this.questionsList.splice(index,1);
                     database.collection('Questions').doc(id).get().then(doc=> {
                         this.questions.push(doc.data());
-                        console.log(doc.data());
                         database.collection('Answers').doc(doc.id).get().then(doc => {
                             this.correctAnswer.push(doc.data().answer);
-                                console.log(doc.data().answer);
                         })
                     })      
                 }
@@ -94,7 +88,7 @@ export default {
         matchAnswer:function(key) {
             var cor = this.correctAnswer[this.index];
             this.selectedAnswer = key;
-            console.log("correct answer is ",cor, "Selected is ",key);
+            
             if (cor == key) {
                 this.counter++;
                 document.getElementById(key).style.color = "green";
@@ -130,7 +124,7 @@ export default {
         document.body.style.backgroundColor = "#343434" 
         const self = this;
         firebase.auth().onAuthStateChanged(function(user) {
-          if (user) self.fetchQuestions();
+            if (user) self.fetchQuestions();
         })
     },
 }

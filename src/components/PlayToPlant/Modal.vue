@@ -82,7 +82,7 @@ import database from "../../firebase.js"
               database.collection("Users").doc(user.uid).update({
                 lastSignInTime: user.metadata.lastSignInTime,
               })
-              console.log(user.metadata.lastSignInTime);
+              console.log("Last sign-in time is:",user.metadata.lastSignInTime);
             }).then(this.close());
           })
           .catch(error => {
@@ -118,25 +118,18 @@ import database from "../../firebase.js"
           var user = firebase.auth().currentUser;
           database.collection("Users").doc(user.uid).get().then(doc=> {
             if (doc.data().lastSignInTime!="") {
-              console.log("last signin time from doc: ",doc.data().lastSignInTime);
               lastSignIn=doc.data().lastSignInTime.substring(5,7)
-              console.log("Okie we got: ",lastSignIn);
               }
             }
           ).then(()=> {
-              console.log(user.uid," ",lastSignIn);
-              console.log(lastSignIn.length);
-      
               if (lastSignIn.length!=0) {
-                console.log("Not first time log in");
-            
                 if (date-lastSignIn>0) {
                     database.collection("Users").doc(user.uid).update({
                       chanceLeft:2,
                       questionsList:["01","02","03","04","05","06","07","08","09","10",
                                       "11","12","13","14","15","16","17","18","19","20",
                                       "21","22","23","24","25","26","27","28","29","30"],
-                    }).then(console.log("updated chanceLeft"))
+                    })
                 }
                 if (date-lastSignIn==1) {
                     database.collection("Users").doc(user.uid).update({
@@ -158,7 +151,6 @@ import database from "../../firebase.js"
                 }
               }
             })
-  
           resolve("Completed!");
         })
       }

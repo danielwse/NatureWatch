@@ -69,7 +69,6 @@ export default {
             var uid=firebase.auth().currentUser.uid;
             database.collection('Users').doc(uid).onSnapshot({includeMetadataChanges:true}, (doc)=> {
                 self.chances = doc.data().chanceLeft;
-                console.log(self.chances);
             });
           }
         })

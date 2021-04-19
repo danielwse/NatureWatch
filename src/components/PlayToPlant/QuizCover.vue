@@ -45,9 +45,8 @@ export default {
     methods:{
         showModal:function() {
             var user = firebase.auth().currentUser;
+            
             if (user!=null) {
-                console.log(firebase.auth().currentUser);
-           
                 const today = new Date();
                 this.date = today.getDate();
                 var last = firebase.auth().currentUser.metadata.lastSignInTime;

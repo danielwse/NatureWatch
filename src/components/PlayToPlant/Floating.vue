@@ -38,11 +38,13 @@ export default {
         fetchUser:function(){
             firebase.auth().onAuthStateChanged(user=> {
                 if (user) {
-                  var uid = firebase.auth().currentUser.uid;
-                  if (uid!=null) {
-                      console.log(uid);
-                      database.collection('Users').doc(uid).get().then(doc => this.userName = doc.data().name);
-                  }
+                    var currentUser = firebase.auth().currentUser
+                    if (currentUser) {
+                        var uid = currentUser.uid;
+                        if (uid!=null) {
+                            database.collection('Users').doc(uid).get().then(doc => this.userName = doc.data().name);
+                        }
+                    }
                 }
             })    
         },
