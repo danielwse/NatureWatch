@@ -5,7 +5,8 @@
             
             @update:zoom="zoomUpdate"
             @update:center="centerUpdate"
-            :zoom="zoom" :center="center">
+            :zoom="zoom" :center="center"
+            ref="myMap">
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
             <l-marker 
                 @mouseenter="mouseEnter(country)"
@@ -75,13 +76,13 @@ export default {
         },
         centerUpdate: function(center){
             this.currentCenter = center
+            console.log(this.currentCenter)
         },
         zoomUpdate: function(zoom){
             this.currentZoom = zoom
         },
         changeCo: function(){
-            this.center= L.latLng(this.hover[0],this.hover[1])
-            this.zoom = 10
+            this.$refs.myMap.mapObject.setView(L.latLng(this.hover[0],this.hover[1]),10)
         },
         getInfo(country){
             var deforest = country.Deforestation
@@ -111,8 +112,7 @@ export default {
             }
         },
         zoomOut(){
-            this.center = this.defaultCenter;
-            this.zoom = 2;
+            this.$refs.myMap.mapObject.setView(L.latLng(this.defaultCenter[0],this.defaultCenter[1]),2)
         },
         getIcon(country){
             var deforest = country.Deforestation;
@@ -133,7 +133,7 @@ export default {
         
     },
     watch: {
-        hover(){
+        hover: function(){
             this.changeCo();
         }
     }
